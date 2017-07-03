@@ -7,7 +7,7 @@ import './index.css';
 
 class App extends React.Component {
   render() {
-    let time = '1540';
+    let time = '10 HOURS AGO';
     let postObject = {
       author: {
         name: '9at8',
@@ -47,7 +47,8 @@ class App extends React.Component {
       ]
     };
     return (
-      <div>
+      <div className="posts">
+        <Post post={postObject}/>
         <Post post={postObject}/>
       </div>
     );

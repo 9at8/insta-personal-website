@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './response.css';
+
 // Like Component -----------------------
 const Likes = (props) => {
   const numberOfLikes = () => {
@@ -15,8 +17,8 @@ const Likes = (props) => {
 
   return (
     <div className="likes">
-      <div>
-        <button className="like">Like</button>
+      <div className="buttons">
+        <button className="like">Heart</button>
         <button className="comment">Comment</button>
       </div>
       <div>
@@ -70,9 +72,9 @@ class Comments extends React.Component {
     }
     return (
       <button
-        className="moreComments"
+        className="more-comments"
         onClick={this.handleMoreComments}>
-        Load more comments
+        load more comments
       </button>
     );
   };
@@ -106,14 +108,27 @@ Comments.propTypes = {
 // Time Component -----------------------
 
 const Time = (props) => {
-  return <div>{props.time}</div>
+  return <div className="time">{props.time}</div>
 };
 
 // --------------------------------------
 
 
+// Add a comment Component --------------
+
+const AddComment = (props) => {
+  return (
+    <div className="add-comment">
+      <input placeholder="Add a comment..."/>
+      <button>...</button>
+    </div>
+  );
+};
+
+// --------------------------------------
+
 // Only the response is exported
-// Response Component -------------------
+  // Response Component -------------------
 
 export default class Response extends React.Component {
   constructor(props) {
@@ -122,18 +137,14 @@ export default class Response extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="response">
         <Likes likes={this.props.likes} />
         <Comments author={this.props.author.name}
                   caption={this.props.caption}
                   comments={this.props.comments} />
         <Time time={this.props.time} />
+        <AddComment/>
       </div>
     )
   }
 }
-
-// TODO
-//   Time component
-//   Add-comment component
-//   Wrap all this up in Response and export

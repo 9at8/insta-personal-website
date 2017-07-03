@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 import Response from './response';
 
+import './post.css';
+
 
 const Header = (props) => {
   return (
     <div className="header">
       <img className="avatar"
-           src={props.author.avatar}
-           style={{width: '50px'}}/>
+           src={props.author.avatar}/>
       <div>
-        {props.author.name}
+        <b>{props.author.name}</b>
         <br/>
         {!!props.location && props.location}
       </div>
@@ -21,7 +22,9 @@ const Header = (props) => {
 
 
 const Image = (props) => {
-  return <img src={props.src} alt={props.alt}/>;
+  return <img className="post-picture"
+              src={props.src}
+              alt={props.alt}/>;
 };
 
 

@@ -1,0 +1,64 @@
+.response {
+    padding: 5px 15px 0;
+    font-size: 14px;
+}
+
+.likes > .buttons {
+    height: 40px;
+    box-sizing: border-box;
+    padding: 8px 0;
+}
+
+.likes {
+    font-weight: bold;
+}
+
+.comments ul, .comments li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.comments li {
+    padding: 5px 0 0;
+}
+
+.more-comments {
+    border: none;
+    background: none;
+    font: inherit;
+    padding: 5px 0 0;
+    color: #999999;
+}
+
+.time {
+    padding: 5px 0 5px;
+    font-size: 10px;
+    color: #999999;
+}
+
+.add-comment {
+    display: flex;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.add-comment > input {
+    font-size: 14px;
+    padding: 16px 0 16px;
+    box-sizing: border-box;
+    height: 56px;
+    border: none;
+    width: 100%;
+}
+
+.add-comment > input::placeholder {
+    color: #999999;
+}
+
+.add-comment > button {
+    font-weight: bold;
+    background: none;
+    border: none;
+}
