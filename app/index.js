@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Navbar from './navbar/navbar';
 import Post from './post/post';
 
 import './index.css';
@@ -48,6 +49,7 @@ class App extends React.Component {
     };
     return (
       <div className="posts">
+        <Navbar/>
         <Post post={postObject}/>
         <Post post={postObject}/>
       </div>
