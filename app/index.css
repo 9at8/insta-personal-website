@@ -5,6 +5,11 @@ html, body {
     font-size: 14px;
 }
 
+.main-container {
+    margin: 75px 0;
+    padding: 0;
+}
+
 .posts {
     display: flex;
     background: #fafafa;

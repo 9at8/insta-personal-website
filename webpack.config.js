@@ -5,7 +5,8 @@ module.exports = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   module: {
     loaders: [
@@ -13,6 +14,9 @@ module.exports = {
       {test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/},
       {test: /\.css$/, loader: ['style-loader', 'css-loader'], exclude: /node_modules/}
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({

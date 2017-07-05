@@ -1,18 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Navbar from './navbar/navbar';
-import Home from './home';
+import Home from './home/home';
+import Explore from './explore/explore';
+import Profile from './profile/profile';
+import SearchResults from './search-results/search-results';
+import NotFound from './404/404';
 
 import './index.css';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="posts">
-        <Navbar/>
-        <Home/>
-      </div>
+      <Router>
+        <div className="posts">
+          <Navbar/>
+          <div className="main-container">
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/explore" component={Explore}/>
+              <Route path="/profile" component={Profile}/>
+              <Route path="/search-results" component={SearchResults}/>
+              <Route component={NotFound}></Route>
+            </Switch>
+          </div>
+        </div>
+      </Router>
     );
   }
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Post from './post/post';
+import Post from './../post/post';
 
-import './home.css';
-import postObject from './SampleData';
+import postObject from './../SampleData';
 
 const Home = (props) => {
   return (

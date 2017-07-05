@@ -71,6 +71,8 @@
     padding: 0;
     border: none;
     background: inherit;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .search-box > div > button {

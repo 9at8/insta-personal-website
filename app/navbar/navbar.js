@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './navbar.css';
@@ -9,7 +10,9 @@ import './navbar.css';
 const Header = (props) => {
   return (
     <div className="nav-header">
-      LOGO | Aditya
+      <Link to="/">
+        LOGO | Aditya
+      </Link>
     </div>
   );
 };
@@ -78,7 +81,7 @@ class NavButtons extends React.Component {
     };
   }
 
-  button = (type) => {
+  button = (type, link) => {
     if (type === 'Heart') {
       return (
         <div className="nav-button"
@@ -89,7 +92,9 @@ class NavButtons extends React.Component {
     }
     return (
       <div className="nav-button">
-        {type}
+        <Link to={link}>
+          {type}
+        </Link>
       </div>
     );
   };
@@ -106,9 +111,9 @@ class NavButtons extends React.Component {
   render() {
     return (
       <div className="nav-buttons">
-        {this.button('Explore')}
-        {this.button('Heart')}
-        {this.button('Profile')}
+        {this.button('Explore', '/explore')}
+        {this.button('Heart', '')}
+        {this.button('Profile', '/profile')}
       </div>
     );
   }
