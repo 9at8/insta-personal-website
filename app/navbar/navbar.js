@@ -131,7 +131,7 @@ export default class Navbar extends React.Component {
   hideNavbar = () => {
     let isHidden = this.state.isHidden;
     let curr = window.scrollY;
-    if (curr > this.state.prev) {
+    if (curr > this.state.prev && curr > 75) {
       if (!isHidden) this.setState({isHidden: true});
     } else if (isHidden) this.setState({isHidden: false});
     this.setState({prev: curr});
@@ -150,9 +150,11 @@ export default class Navbar extends React.Component {
     if (this.state.isHidden) className += ' hide-nav';
     return (
       <div className={className}>
-        <Header/>
-        <SearchBox/>
-        <NavButtons/>
+        <div>
+          <Header/>
+          <SearchBox/>
+          <NavButtons/>
+        </div>
       </div>
     );
   }

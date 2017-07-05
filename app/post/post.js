@@ -8,8 +8,8 @@ import './post.css';
 
 const Header = (props) => {
   return (
-    <div className="header">
-      <img className="avatar"
+    <div className="post-header">
+      <img className="post-avatar"
            src={props.author.avatar}/>
       <div>
         <b>{props.author.name}</b>
