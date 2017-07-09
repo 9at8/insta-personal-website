@@ -10,7 +10,7 @@ html, body {
     padding: 0;
 }
 
-.posts {
+.wrapper {
     display: flex;
     background: #fafafa;
     flex-direction: column;
