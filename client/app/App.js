@@ -17,7 +17,7 @@ const App = (props) => {
           <Route exact path="/" component={Home}/>
           <Route path="/explore" component={Explore}/>
           <Route path="/search-results" component={SearchResults}/>
-          <Route path="/:username" component={Profile}/>
+          <Route path="/user/:username" component={Profile}/>
         </Switch>
       </div>
     </div>

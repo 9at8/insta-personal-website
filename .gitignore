@@ -1,4 +1,8 @@
-node_modules
-package-lock.json
-dist
+client/node_modules
+client/package-lock.json
+client/dist
+client/public
+server/node_modules
+server/dist
+server/npm-debug.log
 .idea

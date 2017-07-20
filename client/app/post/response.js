@@ -47,14 +47,14 @@ class Comments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: this.props.comments.slice(-4,),
+      comments: this.props.comments.slice(-4),
       size: this.props.comments.length
     };
   };
 
   showComments = () => {
     return this.state.comments.map((item) => {
-      return <Comment user={item.user} comment={item.comment} />
+      return <Comment user={item.user} comment={item.comment}/>;
     });
   };
 
@@ -85,7 +85,7 @@ class Comments extends React.Component {
         <ul>
           <Comment
             user={this.props.author}
-            comment={this.props.caption} />
+            comment={this.props.caption}/>
         </ul>
         {this.loadMoreComments()}
         <ul>
@@ -108,7 +108,7 @@ Comments.propTypes = {
 // Time Component -----------------------
 
 const Time = (props) => {
-  return <div className="time">{props.time}</div>
+  return <div className="time">{props.time}</div>;
 };
 
 // --------------------------------------
@@ -128,23 +128,44 @@ const AddComment = (props) => {
 // --------------------------------------
 
 // Only the response is exported
-  // Response Component -------------------
+// Response Component -------------------
+
+import fetch from 'node-fetch';
 
 export default class Response extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      text: null
+    };
   }
+
+  componentDidMount() {
+    //fetch('http://localhost:8080/api/gg')
+    //  .then(res => {
+    //    console.log(res);
+    //    return res.text();
+    //  })
+    //  .then(resText => this.setState({text: resText}));
+  }
+
+  //componentDidMount() {
+  //  this.setState({text: this.getApi()});
+  //}
 
   render() {
     return (
       <div className="response">
-        <Likes likes={this.props.likes} />
+        <Likes likes={this.props.likes}/>
         <Comments author={this.props.author.name}
                   caption={this.props.caption}
-                  comments={this.props.comments} />
-        <Time time={this.props.time} />
+                  comments={this.props.comments}/>
+        <Time time={this.props.time}/>
+        {/*<div>*/}
+          {/*{this.state.text}*/}
+        {/*</div>*/}
         <AddComment/>
       </div>
-    )
+    );
   }
 }
