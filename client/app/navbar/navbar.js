@@ -113,7 +113,7 @@ class NavButtons extends React.Component {
       <div className="nav-buttons">
         {this.button('Explore', '/explore')}
         {this.button('Heart', '')}
-        {this.button('Profile', '/profile')}
+        {this.button('Profile', '/9at8')}
       </div>
     );
   }

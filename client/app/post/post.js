@@ -51,24 +51,24 @@ export default class Post extends React.Component {
   }
 }
 
-Post.propTypes = {
-  post: PropTypes.shape(
-    {
-      author: PropTypes.shape(
-        {
-          name: PropTypes.string,
-          avatar: PropTypes.string
-        }).isRequired,
-      location: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      caption: PropTypes.string.isRequired,
-      likes: PropTypes.arrayOf(PropTypes.string).isRequired,
-      comments: PropTypes.arrayOf(PropTypes.shape(
-        {
-          user: PropTypes.string.isRequired,
-          comment: PropTypes.string.isRequired
-        })).isRequired
-    }
-  )
-};
+//Post.propTypes = {
+//  post: PropTypes.shape(
+//    {
+//      author: PropTypes.shape(
+//        {
+//          name: PropTypes.string,
+//          avatar: PropTypes.string
+//        }).isRequired,
+//      location: PropTypes.string.isRequired,
+//      time: PropTypes.string.isRequired,
+//      image: PropTypes.string.isRequired,
+//      caption: PropTypes.string.isRequired,
+//      likes: PropTypes.arrayOf(PropTypes.string).isRequired,
+//      comments: PropTypes.arrayOf(PropTypes.shape(
+//        {
+//          user: PropTypes.string.isRequired,
+//          comment: PropTypes.string.isRequired
+//        })).isRequired
+//    }
+//  )
+//};

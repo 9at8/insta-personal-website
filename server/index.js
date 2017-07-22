@@ -16,4 +16,8 @@ app.get('/api/home', (req, res) => {
     .then(toSend => res.send(toSend));
 });
 
+app.get('/api/explore', (req, res) => {
+  res.send('Hello!');
+});
+
 app.listen(9090);

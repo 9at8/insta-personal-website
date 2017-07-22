@@ -19,6 +19,7 @@
     height: 100%;
     margin-right: 10px;
     border-radius: 50%;
+    border: 1px solid #e6e6e6;
 }
 
 .post-picture {
