@@ -4,8 +4,9 @@ const postObject = {
     name: '9at8',
     avatar: 'https://avatars0.githubusercontent.com/u/8235156'
   },
+  type: 'home',
   location: 'Home',
-  time: time,
+  time: '10 HOURS AGO',
   image: 'https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F',
   caption: 'test caption bitches',
   likes: ['user1', 'user2', 'user3'],

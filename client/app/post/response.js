@@ -130,8 +130,6 @@ const AddComment = (props) => {
 // Only the response is exported
 // Response Component -------------------
 
-import fetch from 'node-fetch';
-
 export default class Response extends React.Component {
   constructor(props) {
     super(props);
@@ -140,32 +138,19 @@ export default class Response extends React.Component {
     };
   }
 
-  componentDidMount() {
-    //fetch('http://localhost:8080/api/gg')
-    //  .then(res => {
-    //    console.log(res);
-    //    return res.text();
-    //  })
-    //  .then(resText => this.setState({text: resText}));
-  }
-
-  //componentDidMount() {
-  //  this.setState({text: this.getApi()});
-  //}
-
   render() {
     return (
       <div className="response">
         <Likes likes={this.props.likes}/>
-        <Comments author={this.props.author.name}
-                  caption={this.props.caption}
-                  comments={this.props.comments}/>
+        <Comments
+          author={this.props.author.name}
+          caption={this.props.caption}
+          comments={this.props.comments}/>
         <Time time={this.props.time}/>
-        {/*<div>*/}
-          {/*{this.state.text}*/}
-        {/*</div>*/}
         <AddComment/>
       </div>
     );
   }
 }
+
+// --------------------------------------

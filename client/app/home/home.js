@@ -1,20 +1,45 @@
 import React from 'react';
+import fetch from 'node-fetch';
 
 import Post from './../post/post';
 
-import postObject from './../SampleData';
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      postObject: null
+    };
+  }
 
-const Home = (props) => {
-  return (
-    <div className="home">
-      <Post post={postObject}/>
-      <Post post={postObject}/>
-      <Post post={postObject}/>
-      <Post post={postObject}/>
-      <Post post={postObject}/>
-      <Post post={postObject}/>
-    </div>
-  );
-};
+  getHomePosts = () => {
+    return (
+      <div className="Home">
+        <Post post={this.state.postObject}/>
+        <Post post={this.state.postObject}/>
+        <Post post={this.state.postObject}/>
+        <Post post={this.state.postObject}/>
+        <Post post={this.state.postObject}/>
+        <Post post={this.state.postObject}/>
+      </div>
+    );
+  };
 
-export default Home;
+  setPostObject = (text) => {
+    console.log(text);
+    this.setState({postObject: JSON.parse(text)});
+  };
+
+  componentDidMount() {
+    fetch('http://localhost:8080/api/home')
+      .then(res => res.text())
+      .then(resText => this.setPostObject(resText));
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.postObject && this.getHomePosts()}
+      </div>
+    );
+  }
+}
