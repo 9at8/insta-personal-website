@@ -1,5 +1,5 @@
 import express from 'express';
-import {MongoClient} from 'mongodb';
+import {MongoClient, ObjectId} from 'mongodb';
 
 const app = express();
 
@@ -18,6 +18,12 @@ app.get('/api/home', (req, res) => {
 
 app.get('/api/explore', (req, res) => {
   res.send('Hello!');
+});
+
+app.get('/api/post/:postID', (req, res) => {
+  posts.findOne({_id: ObjectId(req.params.postID)})
+    .then(obj_data => JSON.stringify(obj_data))
+    .then(toSend => res.send(toSend));
 });
 
 app.listen(9090);

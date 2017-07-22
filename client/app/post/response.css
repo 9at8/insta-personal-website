@@ -1,3 +1,13 @@
+.response-standalone-container {
+    padding: 5px 15px 0;
+    font-size: 14px;
+    height: 510px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .response {
     padding: 5px 15px 0;
     font-size: 14px;
@@ -11,6 +21,7 @@
 
 .likes {
     font-weight: bold;
+    border-top: 1px solid #e6e6e6;
 }
 
 .comments ul, .comments li {

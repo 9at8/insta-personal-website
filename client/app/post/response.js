@@ -46,10 +46,17 @@ const Comment = (props) => {
 class Comments extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      comments: this.props.comments.slice(-4),
-      size: this.props.comments.length
-    };
+    if (this.props.standalone) {
+      this.state = {
+        comments: this.props.comments.slice(-10),
+        size: this.props.comments.length
+      };
+    } else {
+      this.state = {
+        comments: this.props.comments.slice(-4),
+        size: this.props.comments.length
+      };
+    }
   };
 
   showComments = () => {
@@ -59,11 +66,7 @@ class Comments extends React.Component {
   };
 
   handleMoreComments = () => {
-    this.setState(() => {
-      return {
-        comments: this.props.comments
-      };
-    });
+    this.setState({comments: this.props.comments});
   };
 
   loadMoreComments = () => {
@@ -80,6 +83,21 @@ class Comments extends React.Component {
   };
 
   render() {
+    if (this.props.standalone) {
+      return (
+        <div className="comments" style={{overflowY: "auto"}}>
+          <ul>
+            <Comment
+              user={this.props.author}
+              comment={this.props.caption}/>
+          </ul>
+          {this.loadMoreComments()}
+          <ul>
+            {this.showComments()}
+          </ul>
+        </div>
+      );
+    }
     return (
       <div className="comments">
         <ul>
@@ -139,6 +157,22 @@ export default class Response extends React.Component {
   }
 
   render() {
+    if (this.props.standalone) {
+      return (
+        <div className="response-standalone-container">
+          <Comments
+            standalone={true}
+            author={this.props.author.name}
+            caption={this.props.caption}
+            comments={this.props.comments}/>
+          <div>
+            <Likes likes={this.props.likes}/>
+            <Time time={this.props.time}/>
+            <AddComment/>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="response">
         <Likes likes={this.props.likes}/>

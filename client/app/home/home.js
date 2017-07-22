@@ -25,7 +25,6 @@ export default class Home extends React.Component {
   };
 
   setPostObject = (text) => {
-    console.log(text);
     this.setState({postObject: JSON.parse(text)});
   };
 

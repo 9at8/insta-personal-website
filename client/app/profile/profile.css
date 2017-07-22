@@ -7,12 +7,38 @@
     justify-content: space-between;
     align-items: center;
     height: 240px;
-    max-width: 750px;
+    width: 100%;
     padding: 60px 0 40px;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
-.profile-header img {
+.profile-header-image {
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+}
+
+.profile-header-image img {
     height: 100%;
     border-radius: 50%;
+}
+
+.profile-header-info {
+    flex: 2;
+    height: 100%;
+}
+
+.profile-header-name {
+    font-size: 32px;
+    padding: 0 16px 0 0;
+}
+
+.profile-header-info > div {
+    display: flex;
+    padding: 8px 0;
+}
+
+.profile-header-info-stats > span {
+    padding: 0 32px 0 0;
 }
