@@ -6,38 +6,29 @@ import Post from './../post/post';
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      postObject: null
-    };
+    this.state = {posts: null};
   }
 
   getHomePosts = () => {
     return (
-      <div className="Home">
-        <Post post={this.state.postObject}/>
-        <Post post={this.state.postObject}/>
-        <Post post={this.state.postObject}/>
-        <Post post={this.state.postObject}/>
-        <Post post={this.state.postObject}/>
-        <Post post={this.state.postObject}/>
-      </div>
+      this.state.posts.map((post) => <Post key={post._id} post={post}/>)
     );
   };
 
-  setPostObject = (text) => {
-    this.setState({postObject: JSON.parse(text)});
+  setPosts = (text) => {
+    this.setState({posts: JSON.parse(text)});
   };
 
   componentDidMount() {
     fetch('http://localhost:8080/api/home')
       .then(res => res.text())
-      .then(resText => this.setPostObject(resText));
+      .then(resText => this.setPosts(resText));
   }
 
   render() {
     return (
-      <div>
-        {this.state.postObject && this.getHomePosts()}
+      <div className="Home">
+        {this.state.posts && this.getHomePosts()}
       </div>
     );
   }

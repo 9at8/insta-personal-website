@@ -83,6 +83,10 @@ class Comments extends React.Component {
   };
 
   render() {
+    if (!this.props.comments) {
+      return <div className="comments"> </div>;
+    }
+
     if (this.props.standalone) {
       return (
         <div className="comments" style={{overflowY: "auto"}}>

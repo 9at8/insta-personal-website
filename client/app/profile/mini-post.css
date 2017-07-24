@@ -1,0 +1,43 @@
+.mini-post {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    width: 100%;
+}
+
+.mini-post-empty {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    width: 100%;
+}
+
+.mini-post img {
+    width: 100%;
+}
+
+.mini-post-overlay {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.mini-post-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.mini-post-overlay > span {
+    /*padding: 14px;*/
+    font-weight: bold;
+    font-size: 18px;
+}
