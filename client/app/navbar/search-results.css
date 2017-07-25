@@ -49,6 +49,7 @@
     background: #fff;
     padding: 16px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .search-result:hover {
