@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import SearchResults from './search-results.js';
 import './navbar.css';
 
 
@@ -26,43 +27,51 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isActive: false
+      isActive: false,
+      showSearchResults: false,
     };
   }
 
   handleBoxClick = () => {
-    this.setState({isActive: true});
+    this.props.showSearchResults();
+    this.setState({isActive: true, showSearchResults: true});
   };
 
   handleCloseClick = () => {
-    this.setState({isActive: false});
+    this.props.hideSearchResults();
+    this.setState({isActive: false, showSearchResults: false});
   };
 
   box = () => {
     if (this.state.isActive) {
       return (
-        <div>
-          <div className="search-icon">O</div>
-          <input className="search"
-                 placeholder="Search"/>
-          <button className="close-search"
-                  onClick={this.handleCloseClick}>x
-          </button>
+        <div className="search-box" style={{background: '#fff'}}>
+          <div>
+            <div className="search-icon">O</div>
+            <input className="search"
+                   placeholder="Search"/>
+            <button className="close-search"
+                    onClick={this.handleCloseClick}>x
+            </button>
+          </div>
         </div>
       );
     }
     return (
-      <div onClick={this.handleBoxClick}>
-        <div className="search-icon">O</div>
-        <div>Search</div>
+      <div className="search-box">
+        <div onClick={this.handleBoxClick}>
+          <div className="search-icon">O</div>
+          <div>Search</div>
+        </div>
       </div>
     );
   };
 
   render() {
     return (
-      <div className="search-box">
+      <div className="search-container">
         {this.box()}
+        <SearchResults show={this.state.showSearchResults}/>
       </div>
     );
   }
@@ -129,17 +138,28 @@ export default class Navbar extends React.Component {
     super(props);
     this.state = {
       isHidden: false,
-      prev: 0
-    }
+      prev: 0,
+      showSearchResults: false
+    };
   }
 
   hideNavbar = () => {
     let isHidden = this.state.isHidden;
     let curr = window.scrollY;
-    if (curr > this.state.prev && curr > 75) {
-      if (!isHidden) this.setState({isHidden: true});
-    } else if (isHidden) this.setState({isHidden: false});
+    if (!this.state.showSearchResults) {
+      if (curr > this.state.prev && curr > 75) {
+        if (!isHidden) this.setState({isHidden: true});
+      } else if (isHidden) this.setState({isHidden: false});
+    }
     this.setState({prev: curr});
+  };
+
+  showSearchResults = () => {
+    this.setState({showSearchResults: true});
+  };
+
+  hideSearchResults = () => {
+    this.setState({showSearchResults: false});
   };
 
   componentDidMount() {
@@ -157,7 +177,9 @@ export default class Navbar extends React.Component {
       <div className={className}>
         <div>
           <Header/>
-          <SearchBox/>
+          <SearchBox
+            showSearchResults={this.showSearchResults}
+            hideSearchResults={this.hideSearchResults}/>
           <NavButtons/>
         </div>
       </div>

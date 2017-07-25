@@ -84,7 +84,7 @@ class Comments extends React.Component {
 
   render() {
     if (!this.props.comments) {
-      return <div className="comments"> </div>;
+      return <div className="comments"> </div>
     }
 
     if (this.props.standalone) {

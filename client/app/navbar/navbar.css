@@ -12,7 +12,7 @@
 }
 
 .hide-nav {
-    top: -75px;
+    top: -76px;
 }
 
 .navbar > div {
@@ -37,6 +37,13 @@
 
 }
 
+.search-container {
+    flex: 1;
+    top: 0;
+    align-items: flex-start !important;
+    justify-content: center;
+}
+
 .search-box {
     display: flex;
     align-items: center;
@@ -48,7 +55,6 @@
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     background: #fafafa;
-    flex: 1;
 }
 
 .search-box > div {
