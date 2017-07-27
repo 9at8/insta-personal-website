@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './popup.css';
 import './search-results.css';
 
 const Result = (props) => {
@@ -24,10 +25,10 @@ export default class SearchResults extends React.Component {
     let style = {display: 'none'};
     if (this.props.show === true) style = {};
     return (
-      <div className="search-results-wrapper" style={style}>
-        <div className="search-results-pointer"> </div>
-        <div className="search-results-container">
-          <div className="search-results-main-container">
+      <div className="popup-results-wrapper search-results-wrapper" style={style}>
+        <div className="popup-results-pointer search-results-pointer"> </div>
+        <div className="popup-results-container search-results-container">
+          <div className="popup-results-main-container search-results-main-container">
             <Result/>
             <Result/>
             <Result/>

@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import SearchResults from './search-results.js';
+import SearchResults from './search-results';
+import Hearts from './heart';
 import './navbar.css';
 
 
@@ -28,7 +29,7 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       isActive: false,
-      showSearchResults: false,
+      showSearchResults: false
     };
   }
 
@@ -86,15 +87,24 @@ class NavButtons extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isActive: true
+      isActive: false
     };
   }
+
+  handleHeartClick = () => {
+    this.setState((oldState) => {
+      return {
+        isActive: !oldState.isActive
+      };
+    });
+  };
 
   button = (type, link) => {
     if (type === 'Heart') {
       return (
-        <div className="nav-button"
-             onClick={this.handleHeartClick}>
+        <div
+          className="nav-button"
+          onClick={this.handleHeartClick}>
           {type}
         </div>
       );
@@ -108,21 +118,15 @@ class NavButtons extends React.Component {
     );
   };
 
-  handleHeartClick = (type) => {
-    if (type !== 'Heart') return;
-    this.setState((oldState) => {
-      return {
-        isActive: !oldState.isActive
-      };
-    });
-  };
-
   render() {
     return (
-      <div className="nav-buttons">
-        {this.button('Explore', '/explore')}
-        {this.button('Heart', '')}
-        {this.button('Profile', '/9at8')}
+      <div className="hearts-container">
+        <div className="nav-buttons-container">
+          {this.button('Explore', '/explore')}
+          {this.button('Heart')}
+          {this.button('Profile', '/9at8')}
+        </div>
+        <Hearts show={this.state.isActive}/>
       </div>
     );
   }
@@ -139,19 +143,25 @@ export default class Navbar extends React.Component {
     this.state = {
       isHidden: false,
       prev: 0,
-      showSearchResults: false
+      showSearchResults: false,
+      showHearts: false
     };
   }
 
   hideNavbar = () => {
     let isHidden = this.state.isHidden;
     let curr = window.scrollY;
-    if (!this.state.showSearchResults) {
+    //if (!(this.state.showSearchResults || this.state.showHearts)) {
+    if (this.state.showSearchResults !== true) {
       if (curr > this.state.prev && curr > 75) {
         if (!isHidden) this.setState({isHidden: true});
       } else if (isHidden) this.setState({isHidden: false});
     }
     this.setState({prev: curr});
+  };
+
+  closeResults = () => {
+    this.setState({showSearchResults: false, showHearts: false});
   };
 
   showSearchResults = () => {
@@ -160,6 +170,14 @@ export default class Navbar extends React.Component {
 
   hideSearchResults = () => {
     this.setState({showSearchResults: false});
+  };
+
+  showHearts = () => {
+    this.setState({showHearts: true});
+  };
+
+  hideHearts = () => {
+    this.setState({showHearts: false});
   };
 
   componentDidMount() {
@@ -180,7 +198,9 @@ export default class Navbar extends React.Component {
           <SearchBox
             showSearchResults={this.showSearchResults}
             hideSearchResults={this.hideSearchResults}/>
-          <NavButtons/>
+          <NavButtons
+            showHearts={this.showHearts}
+            hideHearts={this.hideHearts}/>
         </div>
       </div>
     );

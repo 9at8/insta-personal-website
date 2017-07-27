@@ -38,8 +38,8 @@
 }
 
 .search-container {
-    flex: 1;
     top: 0;
+    margin: auto;
     align-items: flex-start !important;
     justify-content: center;
 }
@@ -87,7 +87,16 @@
     color: inherit;
 }
 
-.nav-buttons {
+.hearts-container {
+    position: relative;
+    flex-direction: column !important;
+    margin: auto;
+    justify-content: flex-start;
+}
+
+.nav-buttons-container {
+    display: flex;
+    width: 100%;
     justify-content: flex-end;
 }
 
