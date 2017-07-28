@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 
 import SearchResults from './search-results';
 import Hearts from './heart';
+
+import sprites from './../../public/sprites.png';
+
+import './../../public/fonts/billabong.ttf';
 import './navbar.css';
+import './../../public/font-awesome-4.7.0/css/font-awesome.min.css';
 
 
 // Header Component ---------------------
@@ -13,7 +18,8 @@ const Header = (props) => {
   return (
     <div className="nav-header">
       <Link to="/">
-        LOGO | Aditya
+        <div className="fa fa-instagram fa-1x navbar-logo"> </div>
+        <span> </span> Aditya Thakral
       </Link>
     </div>
   );
@@ -46,14 +52,22 @@ class SearchBox extends React.Component {
   box = () => {
     if (this.state.isActive) {
       return (
-        <div className="search-box" style={{background: '#fff'}}>
+        <div
+          className="search-box"
+          style={{background: '#fff'}}>
           <div>
-            <div className="search-icon">O</div>
-            <input className="search"
-                   placeholder="Search"/>
-            <button className="close-search"
-                    onClick={this.handleCloseClick}>x
-            </button>
+            <div
+              style={{backgroundImage: `url(${sprites})`}}
+              className="search-icon">
+            </div>
+            <input
+              className="search"
+              placeholder="Search"/>
+            <div
+              style={{backgroundImage: `url(${sprites})`}}
+              className="close-search"
+              onClick={this.handleCloseClick}>
+            </div>
           </div>
         </div>
       );
@@ -61,7 +75,10 @@ class SearchBox extends React.Component {
     return (
       <div className="search-box">
         <div onClick={this.handleBoxClick}>
-          <div className="search-icon">O</div>
+          <div
+            style={{backgroundImage: `url(${sprites})`}}
+            className="search-icon">
+          </div>
           <div>Search</div>
         </div>
       </div>
@@ -99,32 +116,34 @@ class NavButtons extends React.Component {
     });
   };
 
-  button = (type, link) => {
-    if (type === 'Heart') {
-      return (
-        <div
-          className="nav-button"
-          onClick={this.handleHeartClick}>
-          {type}
-        </div>
-      );
-    }
-    return (
-      <div className="nav-button">
-        <Link to={link}>
-          {type}
-        </Link>
-      </div>
-    );
-  };
-
   render() {
     return (
       <div className="hearts-container">
         <div className="nav-buttons-container">
-          {this.button('Explore', '/explore')}
-          {this.button('Heart')}
-          {this.button('Profile', '/9at8')}
+          <div className="nav-button">
+            <Link to="/explore">
+              <div
+                style={{backgroundImage: `url(${sprites})`}}
+                className="nav-button-common nav-button-explore">
+              </div>
+            </Link>
+          </div>
+          <div
+            className="nav-button"
+            onClick={this.handleHeartClick}>
+            <div
+              style={{backgroundImage: `url(${sprites})`}}
+              className="nav-button-common nav-button-heart">
+            </div>
+          </div>
+          <div className="nav-button">
+            <Link to="/9at8">
+              <div
+                style={{backgroundImage: `url(${sprites})`}}
+                className="nav-button-common nav-button-profile">
+              </div>
+            </Link>
+          </div>
         </div>
         <Hearts show={this.state.isActive}/>
       </div>

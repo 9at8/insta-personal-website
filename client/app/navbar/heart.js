@@ -1,5 +1,6 @@
 import React from 'react';
 
+import spinner from './../../public/spinner.gif';
 import './popup.css';
 import './heart.css';
 
@@ -20,7 +21,7 @@ const Result = (props) => {
 export default class Hearts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {results: null};
   }
 
   renderResults = () => {
@@ -28,7 +29,7 @@ export default class Hearts extends React.Component {
       return (
         <div className="popup-results-main-container hearts-results-main-container">
           <div className="popup-loading-spinner">
-            <img src="/public/loading_apple.gif"/>
+            <img src={spinner}/>
           </div>
         </div>
       );

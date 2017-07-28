@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import sprites from './../../public/sprites.png';
+
 import './response.css';
 
 // Like Component -----------------------
@@ -15,11 +17,22 @@ const Likes = (props) => {
     return num + ' likes';
   };
 
+  let style = {};
+  if (!props.standalone) {
+    style = {border: "none"};
+  }
+
   return (
-    <div className="likes">
+    <div className="likes" style={style}>
       <div className="buttons">
-        <button className="like">Heart</button>
-        <button className="comment">Comment</button>
+        <div
+          style={{backgroundImage: `url(${sprites})`}}
+          className="like like-comment-common">
+        </div>
+        <div
+          style={{backgroundImage: `url(${sprites})`}}
+          className="comment like-comment-common">
+        </div>
       </div>
       <div>
         {numberOfLikes()}
@@ -170,7 +183,9 @@ export default class Response extends React.Component {
             caption={this.props.caption}
             comments={this.props.comments}/>
           <div>
-            <Likes likes={this.props.likes}/>
+            <Likes
+              standalone={true}
+              likes={this.props.likes}/>
             <Time time={this.props.time}/>
             <AddComment/>
           </div>

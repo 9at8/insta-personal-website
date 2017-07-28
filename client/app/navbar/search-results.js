@@ -1,5 +1,6 @@
 import React from 'react';
 
+import spinner from './../../public/spinner.gif';
 import './popup.css';
 import './search-results.css';
 
@@ -21,6 +22,38 @@ export default class SearchResults extends React.Component {
     this.state = {};
   }
 
+  renderResults = () => {
+    if (!this.state.results) {
+      return (
+        <div className="popup-results-main-container search-results-main-container">
+          <div className="popup-loading-spinner">
+            <img src={spinner}/>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="popup-results-main-container search-results-main-container">
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+          <Result/>
+        </div>
+      );
+    }
+  };
+
   render() {
     let style = {display: 'none'};
     if (this.props.show === true) style = {};
@@ -28,19 +61,7 @@ export default class SearchResults extends React.Component {
       <div className="popup-results-wrapper search-results-wrapper" style={style}>
         <div className="popup-results-pointer search-results-pointer"> </div>
         <div className="popup-results-container search-results-container">
-          <div className="popup-results-main-container search-results-main-container">
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-            <Result/>
-          </div>
+          {this.renderResults()}
         </div>
       </div>
     );
