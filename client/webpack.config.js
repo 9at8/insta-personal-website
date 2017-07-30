@@ -29,7 +29,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:9090'
+      '/api': 'http://localhost:9090',
+      '/static': 'http://localhost:9090'
     }
   },
   plugins: [

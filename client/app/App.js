@@ -6,6 +6,7 @@ import Home from './home/home';
 import Explore from './explore/explore';
 import Profile from './profile/profile';
 import Post from './post/post';
+import NotFound from './404/404';
 
 
 const App = (props) => {
@@ -18,6 +19,7 @@ const App = (props) => {
           <Route path="/explore" component={Explore}/>
           <Route path="/9at8" component={Profile}/>
           <Route path="/post/:postID" component={Post}/>
+          <Route component={NotFound}/>
         </Switch>
       </div>
     </div>

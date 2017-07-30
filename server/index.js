@@ -1,7 +1,9 @@
+import path from 'path';
 import express from 'express';
 import {MongoClient, ObjectId} from 'mongodb';
 
 const app = express();
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 const url = 'mongodb://localhost/personal-website';
 let posts, miniPosts;
@@ -18,9 +20,9 @@ app.get('/api/home', (req, res) => {
     .then(toSend => res.send(toSend));
 });
 
-// Return all miniPosts with {type: home}
+// Return all miniPosts with {type: profile}
 app.get('/api/miniPosts', (req, res) => {
-  miniPosts.find({type: 'home'}).toArray()
+  miniPosts.find({type: 'profile'}).toArray()
     .then(obj_data => JSON.stringify(obj_data))
     .then(toSend => res.send(toSend));
 });

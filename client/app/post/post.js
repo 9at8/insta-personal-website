@@ -7,15 +7,18 @@ import './post.css';
 
 
 const Header = (props) => {
+  const linkToLocation = () => {
+    return <a href={props.location.website}>{props.location.text}</a>
+  };
+
   return (
     <div className="post-header">
       <img
         className="post-avatar"
         src={props.author.avatar}/>
       <div>
-        <b>{props.author.name}</b>
-        <br/>
-        {!!props.location && props.location}
+        <span><b>{props.author.name}</b></span>
+        <span>{!!props.location && linkToLocation()}</span>
       </div>
     </div>
   );
