@@ -15,14 +15,14 @@ MongoClient.connect(url, (err, db) => {
 
 // Return all posts with {type: home}
 app.get('/api/home', (req, res) => {
-  posts.find({type: 'home'}).toArray()
+  posts.find({type: 'home'}).sort({'time': -1}).toArray()
     .then(obj_data => JSON.stringify(obj_data))
     .then(toSend => res.send(toSend));
 });
 
 // Return all miniPosts with {type: profile}
 app.get('/api/miniPosts', (req, res) => {
-  miniPosts.find({type: 'profile'}).toArray()
+  miniPosts.find({type: 'profile'}).sort({'time': -1}).toArray()
     .then(obj_data => JSON.stringify(obj_data))
     .then(toSend => res.send(toSend));
 });
@@ -36,14 +36,14 @@ app.get('/api/post/:postID', (req, res) => {
 
 // Return all explore posts with {type: explore}
 app.get('/api/explore', (req, res) => {
-  posts.find({type: 'explore'}).toArray()
+  posts.find({type: 'explore'}).sort({'time': -1}).toArray()
     .then(obj_data => JSON.stringify(obj_data))
     .then(toSend => res.send(toSend));
 });
 
 // Return all miniPosts with {type: explore}
 app.get('/api/miniPosts/explore', (req, res) => {
-  miniPosts.find({type: 'explore'}).toArray()
+  miniPosts.find({type: 'explore'}).sort({'time': -1}).toArray()
     .then(obj_data => JSON.stringify(obj_data))
     .then(toSend => res.send(toSend));
 });

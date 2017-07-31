@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 16px;
-    width: 100%;
+    box-sizing: border-box;
+    padding: 50%;
 }
 
 .mini-post-empty {
@@ -12,11 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 16px;
-    width: 100%;
-}
-
-.mini-post img {
     width: 100%;
 }
 
@@ -29,6 +24,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .mini-post-overlay:hover {

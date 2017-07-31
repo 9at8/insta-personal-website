@@ -1,5 +1,6 @@
 .profile-container {
-    max-width: 935px;
+    flex-basis: 935px;
+    margin: 0 auto;
 }
 
 .profile-header {
@@ -43,12 +44,18 @@
 }
 
 .mini-post-container {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 .mini-post-row {
     display: flex;
+    flex-shrink: 1;
     align-items: stretch;
     width: 100%;
+}
+
+.mini-post-row > a, .mini-post-row > div {
+    flex: 1;
+    margin: 16px;
 }

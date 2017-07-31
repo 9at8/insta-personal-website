@@ -8,7 +8,7 @@ import './post.css';
 
 const Header = (props) => {
   const linkToLocation = () => {
-    return <a href={props.location.website}>{props.location.text}</a>
+    return <a href={props.location.website}>{props.location.text}</a>;
   };
 
   return (
@@ -23,15 +23,6 @@ const Header = (props) => {
     </div>
   );
 };
-
-
-const Image = (props) => {
-  return <img
-    className={props.divClassName}
-    src={props.src}
-    alt={props.alt}/>;
-};
-
 
 export default class Post extends React.Component {
   constructor(props) {
@@ -48,10 +39,12 @@ export default class Post extends React.Component {
     if (this.state.post) {
       return (
         <div className="post-standalone">
-          <Image
-            divClassName="post-standalone-picture"
-            src={this.state.post.image}
-            alt={this.state.post.caption}/>
+          <div className="post-standalone-picture-container">
+            <img
+              className="post-standalone-picture"
+              src={this.state.post.image}
+              alt={this.state.post.caption}/>
+          </div>
           <div className="post-standalone-container">
             <Header
               author={this.state.post.author}
@@ -88,8 +81,8 @@ export default class Post extends React.Component {
           <Header
             author={this.props.post.author}
             location={this.props.post.location}/>
-          <Image
-            divClassName="post-picture"
+          <img
+            className="post-picture"
             src={this.props.post.image}
             alt={this.props.caption}/>
           <Response

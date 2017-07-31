@@ -37,25 +37,29 @@ class MiniPostContainer extends React.Component {
   renderMiniPosts = () => {
     const renderMiniPostsRow = (i) => {
       let miniPostRow = [];
-      for (let j = i * 3; j < 3; j++) {
+      for (let j = i * 3; j < (i * 3) + 3; j++) {
         if (this.state.miniPosts[j]) {
           miniPostRow.push(
-            <Link to={`/post/${this.state.miniPosts[j].postID}`}>
+            <Link key={j} to={`/post/${this.state.miniPosts[j].postID}`}>
               <MiniPost key={j} miniPost={this.state.miniPosts[j]}/>
             </Link>
           );
         } else {
-          miniPostRow.push(<MiniPost/>)
+          miniPostRow.push(<MiniPost key={j}/>);
         }
       }
+
       return miniPostRow;
     };
 
     let miniPosts = [];
     const numberOfRows = this.state.miniPosts.length / 3;
     for (let i = 0; i < numberOfRows; i++) {
+      console.log(i);
       miniPosts.push(
-        <div className="mini-post-row">
+        <div
+          key={i}
+          className="mini-post-row">
           {renderMiniPostsRow(i)}
         </div>
       );

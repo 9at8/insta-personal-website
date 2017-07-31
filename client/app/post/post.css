@@ -36,20 +36,26 @@
 
 .post-standalone {
     display: flex;
-    width: 950px;
     height: 570px;
+    max-width: 935px;
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     margin: 60px 30px 0;
 }
 
+.post-standalone-picture-container {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+}
+
 .post-standalone-picture {
-    max-height: 100%;
+    width: 100%;
 }
 
 .post-standalone-container {
-    width: 100%;
+    width: 335px;
     max-height: 100%;
     padding: 0 5px;
 }

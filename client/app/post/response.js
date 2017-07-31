@@ -8,7 +8,7 @@ import './response.css';
 // Like Component -----------------------
 const Likes = (props) => {
   const numberOfLikes = () => {
-    const num = props.likes.length;
+    const num = props.likes;
     if (num === 0) {
       return;
     } else if (num === 1) {
