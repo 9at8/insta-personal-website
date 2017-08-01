@@ -22,12 +22,18 @@ const Likes = (props) => {
     style = {border: "none"};
   }
 
+  let isLikedClassName = 'like';
+  if (props.isLiked) {
+    isLikedClassName = 'red-like';
+  }
+
   return (
     <div className="likes" style={style}>
       <div className="buttons">
         <div
           style={{backgroundImage: `url(${sprites})`}}
-          className="like like-comment-common">
+          onClick={() => props.toggleLike()}
+          className={`${isLikedClassName} like-comment-common`}>
         </div>
         <div
           style={{backgroundImage: `url(${sprites})`}}
@@ -185,6 +191,8 @@ export default class Response extends React.Component {
           <div>
             <Likes
               standalone={true}
+              isLiked={this.props.isLiked}
+              toggleLike={this.props.toggleLike}
               likes={this.props.likes}/>
             <Time time={this.props.time}/>
             <AddComment/>
@@ -194,7 +202,10 @@ export default class Response extends React.Component {
     }
     return (
       <div className="response">
-        <Likes likes={this.props.likes}/>
+        <Likes
+          isLiked={this.props.isLiked}
+          toggleLike={this.props.toggleLike}
+          likes={this.props.likes}/>
         <Comments
           author={this.props.author.name}
           caption={this.props.caption}

@@ -1,5 +1,5 @@
 import React from 'react';
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 import Post from './../post/post';
 
@@ -15,14 +15,9 @@ export default class Home extends React.Component {
     );
   };
 
-  setPosts = (text) => {
-    this.setState({posts: JSON.parse(text)});
-  };
-
   componentDidMount() {
-    fetch('http://localhost:8080/api/home')
-      .then(res => res.text())
-      .then(resText => this.setPosts(resText));
+    axios.get('http://localhost:8080/api/posts/home')
+      .then(response => this.setState({posts: response.data}));
   }
 
   render() {

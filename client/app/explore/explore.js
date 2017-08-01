@@ -35,9 +35,8 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    //fetch('http://localhost:8080/api/explore')
-    //  .then(res => res.text())
-    //  .then(resText => this.setPostObject(resText));
+    //axios.get('http://localhost:8080/api/posts/explore')
+    //  .then(resText => this.setPostObject(resText.data));
   }
 
   render() {

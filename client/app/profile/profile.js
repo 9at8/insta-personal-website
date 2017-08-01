@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 import MiniPost from './mini-post';
 import './profile.css';
@@ -55,7 +56,6 @@ class MiniPostContainer extends React.Component {
     let miniPosts = [];
     const numberOfRows = this.state.miniPosts.length / 3;
     for (let i = 0; i < numberOfRows; i++) {
-      console.log(i);
       miniPosts.push(
         <div
           key={i}
@@ -67,8 +67,7 @@ class MiniPostContainer extends React.Component {
     return miniPosts;
   };
 
-  setMiniPosts = (text) => {
-    let miniPosts = JSON.parse(text);
+  setMiniPosts = (miniPosts) => {
     let numberOfNulls = miniPosts.length % 3;
     for (let i = 0; i < numberOfNulls; i++) {
       miniPosts.push(null);
@@ -77,9 +76,8 @@ class MiniPostContainer extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:8080/api/miniPosts')
-      .then(res => res.text())
-      .then(resText => this.setMiniPosts(resText));
+    axios.get('http://localhost:8080/api/miniPosts')
+      .then(response => this.setMiniPosts(response.data));
   }
 
   render() {
