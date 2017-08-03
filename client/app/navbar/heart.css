@@ -31,15 +31,18 @@
 }
 
 .heart-result-avatar {
-    height: 100%;
-    width: 60px;
-    padding: 12px;
-    box-sizing: border-box;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+    margin-left: 12px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .heart-result-avatar > img {
     height: 100%;
-    border-radius: 50%;
 }
 
 .heart-result-data {

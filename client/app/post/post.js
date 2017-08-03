@@ -57,7 +57,7 @@ export default class Post extends React.Component {
     axios.put(`http://localhost:8080/api/post/${this.state._id}`, {
         likes: this.state.isLiked ? -1 : 1
       })
-      .then(response => console.log(response))
+      .then(response => {})
 
   };
 

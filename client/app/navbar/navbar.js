@@ -145,7 +145,7 @@ class NavButtons extends React.Component {
             </Link>
           </div>
         </div>
-        <Hearts show={this.state.isActive}/>
+        {this.state.isActive && <Hearts/>}
       </div>
     );
   }
