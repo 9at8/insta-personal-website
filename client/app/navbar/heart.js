@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 import spinner from './../../public/spinner.gif';
@@ -13,7 +14,12 @@ const Result = (props) => {
       </div>
       <div className="heart-result-data">
         <div className="heart-result-data-text">{props.caption}</div>
-        <button className="heart-result-data-button">Details</button>
+        <Link
+          to={props.details}>
+          <button className="heart-result-data-button">
+            Details
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -41,10 +47,12 @@ export default class Hearts extends React.Component {
       );
     } else {
       const results = this.state.results.map(result => {
+        let details = `/post/${result.postID}`;
         return (
           <Result
             image={result.image}
-            caption={result.altText}/>
+            caption={result.altText}
+            details={details}/>
         );
       });
       return (

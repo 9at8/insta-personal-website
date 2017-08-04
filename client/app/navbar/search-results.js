@@ -1,69 +1,60 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-import spinner from './../../public/spinner.gif';
 import './popup.css';
 import './search-results.css';
 
 const Result = (props) => {
   return (
     <div className="search-result">
-      <img className="search-result-avatar" src="https://avatars0.githubusercontent.com/u/8235156"/>
+      <div className="search-result-avatar-container">
+        <img
+          className="search-result-avatar"
+          src={props.image}/>
+      </div>
       <div className="search-result-data">
-        <div className="search-result-data-caption">Hello</div>
-        <div className="search-result-data-description">World</div>
+        <div className="search-result-data-caption">{props.caption}</div>
+        {/*<div className="search-result-data-description">World</div>*/}
       </div>
     </div>
   );
 };
 
-export default class SearchResults extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  renderResults = () => {
-    if (!this.state.results) {
+const SearchResults = (props) => {
+  const renderResults = () => {
+    if (props.results && props.results.length > 0) {
       return (
         <div className="popup-results-main-container search-results-main-container">
-          <div className="popup-loading-spinner">
-            <img src={spinner}/>
-          </div>
+          {props.results.map((result) => {
+            return (
+              <Link to={`/post/${result.postID}`}>
+                <Result
+                  image={result.image}
+                  caption={result.altText}/>
+              </Link>
+            );
+          })}
         </div>
       );
     } else {
       return (
-        <div className="popup-results-main-container search-results-main-container">
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
-          <Result/>
+        <div className="popup-results-main-container search-results-main-container search-results-no-results">
+          <span>No results found.</span>
         </div>
       );
     }
   };
 
-  render() {
-    let style = {display: 'none'};
-    if (this.props.show === true) style = {};
-    return (
-      <div className="popup-results-wrapper search-results-wrapper" style={style}>
-        <div className="popup-results-pointer search-results-pointer"> </div>
-        <div className="popup-results-container search-results-container">
-          {this.renderResults()}
+  return (
+    <div className="popup-results-wrapper search-results-wrapper">
+      <div className="popup-results-pointer search-results-pointer"> </div>
+      <div className="popup-results-container search-results-container">
+        <div className="popup-results-main-container search-results-main-container">
+          {renderResults()}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default SearchResults;

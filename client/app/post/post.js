@@ -39,6 +39,17 @@ export default class Post extends React.Component {
     this.state.isLiked = false;
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.postID !== prevProps.match.params.postID) {
+      axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
+        .then(response => {
+          let newState = response.data;
+          newState.isLiked = false;
+          this.setState(newState);
+        });
+    }
+  }
+
   componentDidMount() {
     if (this.state.standalone) {
       axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
@@ -51,13 +62,14 @@ export default class Post extends React.Component {
       return {
         likes: this.state.isLiked ? oldState.likes - 1 : oldState.likes + 1,
         isLiked: !oldState.isLiked
-      }
+      };
     });
 
     axios.put(`http://localhost:8080/api/post/${this.state._id}`, {
-        likes: this.state.isLiked ? -1 : 1
-      })
-      .then(response => {})
+      likes: this.state.isLiked ? -1 : 1
+    })
+      .then(response => {
+      });
 
   };
 
@@ -145,7 +157,7 @@ Post.propTypes = {
       comments: PropTypes.arrayOf(PropTypes.shape(
         {
           user: PropTypes.string.isRequired,
-          comment: PropTypes.string.isRequired,
+          comment: PropTypes.string.isRequired
         })).isRequired
     }
   )

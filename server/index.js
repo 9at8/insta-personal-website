@@ -30,8 +30,10 @@ app.get('/api/post/:postID', (req, res) => {
 
 // Handles likes or unlikes on MongoDB
 app.put('/api/post/:postID', (req, res) => {
-  posts.updateOne({_id: ObjectId(req.params.postID)}, {$inc: {likes: req.body.likes}});
-  miniPosts.updateOne({postID: req.params.postID}, {$inc: {likes: req.body.likes}})
+  Promise.all([
+    posts.updateOne({_id: ObjectId(req.params.postID)}, {$inc: {likes: req.body.likes}}),
+    miniPosts.updateOne({postID: req.params.postID}, {$inc: {likes: req.body.likes}})
+  ])
     .then(toSend => res.json(toSend));
 });
 
@@ -45,6 +47,22 @@ app.get('/api/miniPosts/:type', (req, res) => {
 app.get('/api/miniPosts', (req, res) => {
   miniPosts.find({}).sort({'time': -1}).toArray()
     .then(toSend => res.json(toSend));
+});
+
+// Returns all miniPosts after searching posts {$search: :query}
+// Sorted by textScore
+app.get('/api/search/posts/:query', (req, res) => {
+  posts.find(
+    {$text: {$search: req.params.query}},
+    {score: {$meta: 'textScore'}})
+    .sort({score: {$meta: 'textScore'}})
+    .toArray()
+    .then(posts => {
+      return Promise.all(posts.map(post => {
+        return miniPosts.findOne({postID: post._id.toString()});
+      }));
+    })
+    .then(miniPosts => res.json(miniPosts))
 });
 
 app.listen(9090);

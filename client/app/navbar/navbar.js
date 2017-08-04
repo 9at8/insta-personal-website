@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import SearchResults from './search-results';
@@ -35,7 +36,8 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       isActive: false,
-      showSearchResults: false
+      showSearchResults: false,
+      query: ''
     };
   }
 
@@ -46,7 +48,21 @@ class SearchBox extends React.Component {
 
   handleCloseClick = () => {
     this.props.hideSearchResults();
-    this.setState({isActive: false, showSearchResults: false});
+    this.setState({
+      isActive: false,
+      showSearchResults: false,
+      query: '',
+      results: []
+    });
+  };
+
+  handleQueryChange = (event) => {
+    const value = event.target.value;
+    this.setState({query: value});
+    if (value) {
+      axios(`http://localhost:8080/api/search/posts/${value}`)
+        .then(response => this.setState({results: response.data}))
+    }
   };
 
   box = () => {
@@ -62,7 +78,10 @@ class SearchBox extends React.Component {
             </div>
             <input
               className="search"
-              placeholder="Search"/>
+              placeholder="Search"
+              value={this.state.query}
+              onChange={(event) => this.handleQueryChange(event)}
+              autoFocus/>
             <div
               style={{backgroundImage: `url(${sprites})`}}
               className="close-search"
@@ -79,7 +98,7 @@ class SearchBox extends React.Component {
             style={{backgroundImage: `url(${sprites})`}}
             className="search-icon">
           </div>
-          <div>Search</div>
+          <div>{this.state.query || 'Search'}</div>
         </div>
       </div>
     );
@@ -89,7 +108,7 @@ class SearchBox extends React.Component {
     return (
       <div className="search-container">
         {this.box()}
-        <SearchResults show={this.state.showSearchResults}/>
+        {this.state.showSearchResults && this.state.query && <SearchResults results={this.state.results}/>}
       </div>
     );
   }

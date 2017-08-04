@@ -19,7 +19,7 @@ const Likes = (props) => {
 
   let style = {};
   if (!props.standalone) {
-    style = {border: "none"};
+    style = {border: 'none'};
   }
 
   let isLikedClassName = 'like';
@@ -62,80 +62,76 @@ const Comment = (props) => {
 };
 
 
-class Comments extends React.Component {
-  constructor(props) {
-    super(props);
-    if (this.props.standalone) {
-      this.state = {
-        comments: this.props.comments.slice(-10),
-        size: this.props.comments.length
-      };
-    } else {
-      this.state = {
-        comments: this.props.comments.slice(-4),
-        size: this.props.comments.length
-      };
-    }
-  };
+const Comments = (props) => {
+  let state;
+  if (props.standalone) {
+    state = {
+      comments: props.comments.slice(-10),
+      size: props.comments.length
+    };
+  } else {
+    state = {
+      comments: props.comments.slice(-4),
+      size: props.comments.length
+    };
+  }
 
-  showComments = () => {
-    return this.state.comments.map((item) => {
+  const showComments = () => {
+    return state.comments.map((item) => {
       return <Comment user={item.user} comment={item.comment}/>;
     });
   };
 
-  handleMoreComments = () => {
-    this.setState({comments: this.props.comments});
+  const handleMoreComments = () => {
+    state.comments = props.comments;
   };
 
-  loadMoreComments = () => {
-    if (this.state.size === this.state.comments.length) {
+  const loadMoreComments = () => {
+    if (state.size === state.comments.length) {
       return;
     }
     return (
       <button
         className="more-comments"
-        onClick={this.handleMoreComments}>
+        onClick={handleMoreComments}>
         load more comments
       </button>
     );
   };
 
-  render() {
-    if (!this.props.comments) {
-      return <div className="comments"> </div>
-    }
+  if (!props.comments) {
+    return <div className="comments"></div>;
+  }
 
-    if (this.props.standalone) {
-      return (
-        <div className="comments" style={{overflowY: "auto"}}>
-          <ul>
-            <Comment
-              user={this.props.author}
-              comment={this.props.caption}/>
-          </ul>
-          {this.loadMoreComments()}
-          <ul>
-            {this.showComments()}
-          </ul>
-        </div>
-      );
-    }
+  if (props.standalone) {
     return (
-      <div className="comments">
+      <div className="comments" style={{overflowY: 'auto'}}>
         <ul>
           <Comment
-            user={this.props.author}
-            comment={this.props.caption}/>
+            user={props.author}
+            comment={props.caption}/>
         </ul>
-        {this.loadMoreComments()}
+        {loadMoreComments()}
         <ul>
-          {this.showComments()}
+          {showComments()}
         </ul>
       </div>
     );
   }
-}
+  return (
+    <div className="comments">
+      <ul>
+        <Comment
+          user={props.author}
+          comment={props.caption}/>
+      </ul>
+      {loadMoreComments()}
+      <ul>
+        {showComments()}
+      </ul>
+    </div>
+  );
+};
 
 Comments.propTypes = {
   author: PropTypes.string.isRequired,
@@ -171,50 +167,43 @@ const AddComment = (props) => {
 // Only the response is exported
 // Response Component -------------------
 
-export default class Response extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: null
-    };
-  }
-
-  render() {
-    if (this.props.standalone) {
-      return (
-        <div className="response-standalone-container">
-          <Comments
-            standalone={true}
-            author={this.props.author.name}
-            caption={this.props.caption}
-            comments={this.props.comments}/>
-          <div>
-            <Likes
-              standalone={true}
-              isLiked={this.props.isLiked}
-              toggleLike={this.props.toggleLike}
-              likes={this.props.likes}/>
-            <Time time={this.props.time}/>
-            <AddComment/>
-          </div>
-        </div>
-      );
-    }
+const Response = (props) => {
+  if (props.standalone) {
     return (
-      <div className="response">
-        <Likes
-          isLiked={this.props.isLiked}
-          toggleLike={this.props.toggleLike}
-          likes={this.props.likes}/>
+      <div className="response-standalone-container">
         <Comments
-          author={this.props.author.name}
-          caption={this.props.caption}
-          comments={this.props.comments}/>
-        <Time time={this.props.time}/>
-        <AddComment/>
+          standalone={true}
+          author={props.author.name}
+          caption={props.caption}
+          comments={props.comments}/>
+        <div>
+          <Likes
+            standalone={true}
+            isLiked={props.isLiked}
+            toggleLike={props.toggleLike}
+            likes={props.likes}/>
+          <Time time={props.time}/>
+          <AddComment/>
+        </div>
       </div>
     );
   }
-}
+  return (
+    <div className="response">
+      <Likes
+        isLiked={props.isLiked}
+        toggleLike={props.toggleLike}
+        likes={props.likes}/>
+      <Comments
+        author={props.author.name}
+        caption={props.caption}
+        comments={props.comments}/>
+      <Time time={props.time}/>
+      <AddComment/>
+    </div>
+  );
+};
+
+export default Response;
 
 // --------------------------------------
