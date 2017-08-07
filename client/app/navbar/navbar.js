@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
+import {Buttons, MobileButtons} from './buttons';
 import SearchResults from './search-results';
-import Hearts from './heart';
 
 import sprites from './../../public/sprites.png';
 
@@ -12,10 +11,7 @@ import './../../public/fonts/billabong.ttf';
 import './navbar.css';
 import './../../public/font-awesome-4.7.0/css/font-awesome.min.css';
 
-
-// Header Component ---------------------
-
-const Header = (props) => {
+const Header = () => {
   return (
     <div className="nav-header">
       <Link to="/">
@@ -25,11 +21,6 @@ const Header = (props) => {
     </div>
   );
 };
-
-// --------------------------------------
-
-
-// Search Box Component -----------------
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -114,68 +105,15 @@ class SearchBox extends React.Component {
   }
 }
 
-// --------------------------------------
+export const NavbarMobile = () => {
+  return (
+    <div className="navbar-bottom-mobile">
+      <MobileButtons/>
+    </div>
+  );
+};
 
-
-// Buttons Component --------------------
-
-class NavButtons extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isActive: false
-    };
-  }
-
-  handleHeartClick = () => {
-    this.setState((oldState) => {
-      return {
-        isActive: !oldState.isActive
-      };
-    });
-  };
-
-  render() {
-    return (
-      <div className="hearts-container">
-        <div className="nav-buttons-container">
-          <div className="nav-button">
-            <Link to="/explore">
-              <div
-                style={{backgroundImage: `url(${sprites})`}}
-                className="nav-button-common nav-button-explore">
-              </div>
-            </Link>
-          </div>
-          <div
-            className="nav-button"
-            onClick={this.handleHeartClick}>
-            <div
-              style={{backgroundImage: `url(${sprites})`}}
-              className="nav-button-common nav-button-heart">
-            </div>
-          </div>
-          <div className="nav-button">
-            <Link to="/9at8">
-              <div
-                style={{backgroundImage: `url(${sprites})`}}
-                className="nav-button-common nav-button-profile">
-              </div>
-            </Link>
-          </div>
-        </div>
-        {this.state.isActive && <Hearts/>}
-      </div>
-    );
-  }
-}
-
-// --------------------------------------
-
-
-// Navbar Component ---------------------
-
-export default class Navbar extends React.Component {
+export class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -236,7 +174,7 @@ export default class Navbar extends React.Component {
           <SearchBox
             showSearchResults={this.showSearchResults}
             hideSearchResults={this.hideSearchResults}/>
-          <NavButtons
+          <Buttons
             showHearts={this.showHearts}
             hideHearts={this.hideHearts}/>
         </div>
@@ -244,5 +182,3 @@ export default class Navbar extends React.Component {
     );
   }
 }
-
-// --------------------------------------

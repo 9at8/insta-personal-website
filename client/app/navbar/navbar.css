@@ -120,41 +120,45 @@
     background-position: -401px -94px;
 }
 
-.hearts-container {
-    position: relative;
-    flex-direction: column !important;
-    margin: auto;
-    justify-content: flex-start;
-}
+@media (min-width: 320px) and (max-width: 480px) {
+    .navbar {
+        position: absolute;
+        height: 60px;
+    }
 
-.nav-buttons-container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-}
+    .hide-nav {
+        top: 0;
+    }
 
-.nav-button {
-    padding: 5px;
-    font-size: 20px;
-}
+    .navbar > div > div {
+        display: none;
+    }
 
-.nav-button-common {
-    height: 24px;
-    width: 24px;
-    padding: 0;
-    margin-left: 30px;
-    background-repeat: no-repeat;
-}
+    .nav-header {
+        display: flex !important;
+    }
 
-.nav-button-explore {
-    background-position: -156px -375px;
-}
+    .nav-header > a {
+        justify-content: center;
+    }
+    
+    .nav-header > a > div {
+        display: none;
+    }
+    
+    .nav-header > a > span {
+        display: none;
+    }
 
-.nav-button-heart {
-    background-position: -338px -349px;
+    .navbar-bottom-mobile {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        height: 60px;
+        width: 100%;
+        background: #ffffff;
+        border-top: 1px solid #e6e6e6;
+        align-items: center;
+        justify-content: center;
+    }
 }
-
-.nav-button-profile {
-    background-position: -326px -249px;
-}
-

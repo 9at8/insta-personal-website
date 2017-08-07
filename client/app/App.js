@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
-import Navbar from './navbar/navbar';
+import {Navbar, NavbarMobile} from './navbar/navbar';
 import Home from './home/home';
 import Explore from './explore/explore';
 import Profile from './profile/profile';
@@ -22,6 +22,7 @@ const App = (props) => {
           <Route component={NotFound}/>
         </Switch>
       </div>
+      <NavbarMobile/>
     </div>
   );
 };

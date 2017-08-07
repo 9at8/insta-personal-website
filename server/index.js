@@ -18,7 +18,7 @@ MongoClient.connect(url, (err, db) => {
 
 // Return all explore posts with {type: explore}
 app.get('/api/posts/:type', (req, res) => {
-  posts.find({type: req.params.type}).sort({'time': -1}).toArray()
+  posts.find({}).sort({'time': -1}).toArray()
     .then(toSend => res.json(toSend));
 });
 
