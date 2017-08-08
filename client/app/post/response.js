@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import sprites from './../../public/sprites.png';
 
@@ -145,7 +146,11 @@ Comments.propTypes = {
 // Time Component -----------------------
 
 const Time = (props) => {
-  return <div className="time">{props.time}</div>;
+  return (
+    <div className="time">
+      {moment(props.time).fromNow().toUpperCase()}
+    </div>
+  );
 };
 
 // --------------------------------------
@@ -199,7 +204,6 @@ const Response = (props) => {
         caption={props.caption}
         comments={props.comments}/>
       <Time time={props.time}/>
-      <AddComment/>
     </div>
   );
 };

@@ -60,3 +60,12 @@
     max-height: 100%;
     padding: 0 5px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .post {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        border: 0;
+    }
+}

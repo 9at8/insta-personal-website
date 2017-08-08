@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import Post from './../post/post';
 
+import './home.css';
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="Home">
+      <div className="home">
         {this.state.posts && this.getHomePosts()}
       </div>
     );
