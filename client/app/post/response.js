@@ -64,44 +64,14 @@ const Comment = (props) => {
 
 
 const Comments = (props) => {
-  let state;
-  if (props.standalone) {
-    state = {
-      comments: props.comments.slice(-10),
-      size: props.comments.length
-    };
-  } else {
-    state = {
-      comments: props.comments.slice(-4),
-      size: props.comments.length
-    };
-  }
-
   const showComments = () => {
-    return state.comments.map((item) => {
+    return props.comments.map((item) => {
       return <Comment user={item.user} comment={item.comment}/>;
     });
   };
 
-  const handleMoreComments = () => {
-    state.comments = props.comments;
-  };
-
-  const loadMoreComments = () => {
-    if (state.size === state.comments.length) {
-      return;
-    }
-    return (
-      <button
-        className="more-comments"
-        onClick={handleMoreComments}>
-        load more comments
-      </button>
-    );
-  };
-
   if (!props.comments) {
-    return <div className="comments"></div>;
+    return <div className="comments"/>;
   }
 
   if (props.standalone) {
@@ -112,7 +82,6 @@ const Comments = (props) => {
             user={props.author}
             comment={props.caption}/>
         </ul>
-        {loadMoreComments()}
         <ul>
           {showComments()}
         </ul>
@@ -126,7 +95,6 @@ const Comments = (props) => {
           user={props.author}
           comment={props.caption}/>
       </ul>
-      {loadMoreComments()}
       <ul>
         {showComments()}
       </ul>

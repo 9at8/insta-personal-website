@@ -59,8 +59,25 @@
 
 .heart-result-data-text {
     width: 100%;
+    margin-right: 12px;
 }
 
 .heart-result-data-button {
     height: 70%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .hearts-results-container {
+        position: static;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .hearts-results-main-container {
+        position: static;
+        width: auto;
+        height: auto;
+    }
 }

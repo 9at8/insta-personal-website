@@ -5,6 +5,7 @@ import {Navbar, NavbarMobile} from './navbar/navbar';
 import Home from './home/home';
 import SearchBox from './navbar/searchBox';
 import Explore from './explore/explore';
+import Hearts from './navbar/heart';
 import Profile from './profile/profile';
 import Post from './post/post';
 import NotFound from './404/404';
@@ -19,6 +20,7 @@ const App = (props) => {
           <Route exact path="/" component={Home}/>
           <Route path="/search" component={SearchBox}/>
           <Route path="/explore" component={Explore}/>
+          <Route path="/activity" component={Hearts}/>
           <Route path="/9at8" component={Profile}/>
           <Route path="/post/:postID" component={Post}/>
           <Route component={NotFound}/>

@@ -96,5 +96,6 @@
         border-top: 1px solid #e6e6e6;
         align-items: center;
         justify-content: center;
+        z-index: 99;
     }
 }

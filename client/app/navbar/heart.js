@@ -29,11 +29,14 @@ export default class Hearts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {results: null};
+    if (this.props.match) {
+      this.state.standalone = true;
+    }
   }
 
   componentDidMount() {
     axios.get('http://localhost:8080/api/miniPosts')
-      .then(results => this.setState({results: results.data}))
+      .then(results => this.setState({results: results.data}));
   }
 
   renderResults = () => {
@@ -64,6 +67,13 @@ export default class Hearts extends React.Component {
   };
 
   render() {
+    if (this.state.standalone) {
+      return (
+        <div className="popup-results-container hearts-results-container">
+          {this.renderResults()}
+        </div>
+      );
+    }
     return (
       <div className="popup-results-wrapper hearts-results-wrapper">
         <div className="popup-results-pointer hearts-results-pointer">
