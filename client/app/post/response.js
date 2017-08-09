@@ -188,7 +188,6 @@ const Response = (props) => {
             toggleLike={props.toggleLike}
             likes={props.likes}/>
           <Time time={props.time}/>
-          <AddComment/>
         </div>
       </div>
     );

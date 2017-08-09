@@ -1,5 +1,4 @@
 import React from 'react';
-import fetch from 'node-fetch';
 
 import Experience from './experience';
 import './explore.css';
@@ -41,7 +40,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="explore-container">
         {this.state.postObject && this.getExperiences()}
       </div>
     );

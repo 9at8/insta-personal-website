@@ -6,7 +6,6 @@
 .profile-header {
     display: flex;
     height: 252px;
-    width: 100%;
     padding: 60px 0 40px;
     box-sizing: border-box;
     font-size: 16px;
@@ -39,8 +38,13 @@
     padding: 4px 0 16px;
 }
 
-.profile-header-info-stats > span {
+.profile-header-jobs {
     padding: 0 32px 0 0;
+    display: flex;
+}
+
+.profile-header-jobs-text {
+    padding-left: 0.3em;
 }
 
 .mini-post-container {
@@ -50,11 +54,72 @@
 .mini-post-row {
     display: flex;
     flex-shrink: 1;
-    align-items: stretch;
+    /*align-items: stretch;*/
     width: 100%;
 }
 
 .mini-post-row > a, .mini-post-row > div {
     flex: 1;
     margin: 16px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .profile-header {
+        height: 77px;
+        padding: 0;
+        margin: 30px 16px 24px;
+    }
+
+    .profile-header-image {
+        flex: 0;
+        height: 100%;
+        text-align: center;
+        margin-right: 28px;
+    }
+
+    .profile-header-info-main {
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .profile-header-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile-header-name {
+        font-size: 22px;
+    }
+
+    .profile-header-info-bio-mobile {
+        padding: 0 16px 24px;
+    }
+
+    .profile-header-info-stats-mobile {
+        border-top: 1px solid #e6e6e6;
+        margin: 0 16px;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-jobs {
+        flex: 1;
+        flex-direction: column;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-header-jobs-text {
+        color: #999;
+    }
+
+    .mini-post-row {
+        justify-content: space-between;
+    }
+
+    .mini-post-row > a, .mini-post-row > div {
+        margin: 1px;
+    }
 }

@@ -20,41 +20,37 @@ const Result = (props) => {
   );
 };
 
-const SearchResults = (props) => {
-  const renderResults = () => {
-    if (props.results && props.results.length > 0) {
-      return (
-        <div className="popup-results-main-container search-results-main-container">
-          {props.results.map((result) => {
-            return (
-              <Link to={`/post/${result.postID}`}>
-                <Result
-                  image={result.image}
-                  caption={result.altText}/>
-              </Link>
-            );
-          })}
-        </div>
-      );
-    } else {
-      return (
-        <div className="popup-results-main-container search-results-main-container search-results-no-results">
-          <span>No results found.</span>
-        </div>
-      );
-    }
-  };
+export const SearchResults = (props) => {
+  if (props.results && props.results.length > 0) {
+    return (
+      <div className="popup-results-main-container search-results-main-container">
+        {props.results.map((result) => {
+          return (
+            <Link to={`/post/${result.postID}`}>
+              <Result
+                image={result.image}
+                caption={result.altText}/>
+            </Link>
+          );
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div className="popup-results-main-container search-results-main-container search-results-no-results">
+        <span>No results found.</span>
+      </div>
+    );
+  }
+};
 
+export const SearchResultsPopup = (props) => {
   return (
     <div className="popup-results-wrapper search-results-wrapper">
-      <div className="popup-results-pointer search-results-pointer"> </div>
+      <div className="popup-results-pointer search-results-pointer"/>
       <div className="popup-results-container search-results-container">
-        <div className="popup-results-main-container search-results-main-container">
-          {renderResults()}
-        </div>
+        <SearchResults {...props}/>
       </div>
     </div>
   );
 };
-
-export default SearchResults;

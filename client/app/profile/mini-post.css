@@ -32,8 +32,26 @@
     color: #fff;
 }
 
+.mini-post-overlay > div {
+    display: none;
+}
+
+.mini-post-overlay:hover > div {
+    display: block;
+    height: 19px;
+    width: 19px;
+    background-position: -401px -138px;
+    margin: 8px;
+}
+
 .mini-post-overlay > span {
     /*padding: 14px;*/
     font-weight: bold;
     font-size: 18px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .mini-post-overlay {
+        display: none;
+    }
 }

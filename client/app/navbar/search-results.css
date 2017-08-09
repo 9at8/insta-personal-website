@@ -71,3 +71,9 @@
 .search-result-data-description {
     color: #999;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .search-results-main-container {
+        position: static;
+    }
+}

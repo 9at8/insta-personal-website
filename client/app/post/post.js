@@ -30,28 +30,37 @@ export default class Post extends React.Component {
     super(props);
 
     this.state = this.props.post;
+    const width = window.innerWidth;
 
     if (!this.props.post) {
       this.state = {};
       this.state.standalone = true;
+      this.state.loadData = true;
+    }
+
+    if (480 >= width && width >= 320) {
+      this.state.standalone = false;
+      this.state.mobile = true;
     }
 
     this.state.isLiked = false;
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.match.params.postID !== prevProps.match.params.postID) {
-      axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
-        .then(response => {
-          let newState = response.data;
-          newState.isLiked = false;
-          this.setState(newState);
-        });
+    if (this.state.loadData) {
+      if (this.props.match.params.postID !== prevProps.match.params.postID) {
+        axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
+          .then(response => {
+            let newState = response.data;
+            newState.isLiked = false;
+            this.setState(newState);
+          });
+      }
     }
   }
 
   componentDidMount() {
-    if (this.state.standalone) {
+    if (this.state.loadData) {
       axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
         .then(response => this.setState(response.data));
     }
@@ -68,11 +77,7 @@ export default class Post extends React.Component {
     axios.put(`http://localhost:8080/api/post/${this.state._id}`, {
       likes: this.state.isLiked ? -1 : 1
     })
-      .then(response => {
-      });
-
   };
-
   renderStandalonePost = () => {
     if (this.state.image) {
       return (
@@ -105,7 +110,7 @@ export default class Post extends React.Component {
   };
 
   render() {
-    if (!this.state.standalone) {
+    if (!this.state.standalone && this.state.image) {
       return (
         <div className="post">
           <Header

@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 
 import {Navbar, NavbarMobile} from './navbar/navbar';
 import Home from './home/home';
+import SearchBox from './navbar/searchBox';
 import Explore from './explore/explore';
 import Profile from './profile/profile';
 import Post from './post/post';
@@ -16,6 +17,7 @@ const App = (props) => {
       <div className="main-container">
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route path="/search" component={SearchBox}/>
           <Route path="/explore" component={Explore}/>
           <Route path="/9at8" component={Profile}/>
           <Route path="/post/:postID" component={Post}/>

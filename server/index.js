@@ -51,9 +51,9 @@ app.get('/api/miniPosts', (req, res) => {
 
 // Returns all miniPosts after searching posts {$search: :query}
 // Sorted by textScore
-app.get('/api/search/posts/:query', (req, res) => {
+app.get('/api/search/posts', (req, res) => {
   posts.find(
-    {$text: {$search: req.params.query}},
+    {$text: {$search: req.query.q}},
     {score: {$meta: 'textScore'}})
     .sort({score: {$meta: 'textScore'}})
     .toArray()
