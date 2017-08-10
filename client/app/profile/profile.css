@@ -11,6 +11,14 @@
     font-size: 16px;
 }
 
+.profile-header-links {
+    display: flex;
+}
+
+.profile-header-links div {
+    margin-right: 10px;
+}
+
 .profile-header-image {
     flex: 1;
     height: 100%;
@@ -36,6 +44,10 @@
 .profile-header-info > div {
     display: flex;
     padding: 4px 0 16px;
+}
+
+.profile-header-info-main {
+    align-items: center;
 }
 
 .profile-header-jobs {
@@ -77,18 +89,25 @@
         margin-right: 28px;
     }
 
-    .profile-header-info-main {
-        width: 100%;
-        padding: 0 !important;
-    }
-
     .profile-header-info {
         display: flex;
         align-items: center;
     }
 
-    .profile-header-name {
-        font-size: 22px;
+    .profile-header-info-main {
+        width: 100%;
+        padding: 0 !important;
+        font-size: 16px;
+    }
+
+    .profile-header-links {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .profile-header-links div {
+        margin-right: 0;
+        margin-left: 10px;
     }
 
     .profile-header-info-bio-mobile {

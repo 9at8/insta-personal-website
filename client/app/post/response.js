@@ -36,10 +36,10 @@ const Likes = (props) => {
           onClick={() => props.toggleLike()}
           className={`${isLikedClassName} like-comment-common`}>
         </div>
-        <div
-          style={{backgroundImage: `url(${sprites})`}}
-          className="comment like-comment-common">
-        </div>
+        {/*<div*/}
+          {/*style={{backgroundImage: `url(${sprites})`}}*/}
+          {/*className="comment like-comment-common">*/}
+        {/*</div>*/}
       </div>
       <div>
         {numberOfLikes()}

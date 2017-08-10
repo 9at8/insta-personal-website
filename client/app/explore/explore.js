@@ -1,47 +1,42 @@
 import React from 'react';
+import axios from 'axios';
 
 import Experience from './experience';
 import './explore.css';
-
-import postObject from './SampleData';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postObject: postObject
+      results: null
     };
   }
 
   getExperiences = () => {
     return (
       <div className="experiences">
-        <Experience
-          image={postObject.image}
-          caption={postObject.caption}
-          position={postObject.position}/>
-        <Experience
-          image={postObject.image}
-          caption={postObject.caption}
-          position={postObject.position}/>
+        {this.state.results.map((result) => {
+          return (
+            <Experience
+              image={result.image}
+              caption={result.altText}
+              position={result.likes}
+              postID={result.postID}/>
+          );
+        })}
       </div>
     );
   };
 
-  setPostObject = (text) => {
-    console.log(text);
-    this.setState({postObject: JSON.parse(text)});
-  };
-
   componentDidMount() {
-    //axios.get('http://localhost:8080/api/posts/explore')
-    //  .then(resText => this.setPostObject(resText.data));
+    axios.get('http://localhost:8080/api/miniPosts/explore')
+      .then(response => this.setState({results: response.data}));
   }
 
   render() {
     return (
       <div className="explore-container">
-        {this.state.postObject && this.getExperiences()}
+        {this.state.results && this.getExperiences()}
       </div>
     );
   }

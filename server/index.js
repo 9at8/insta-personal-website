@@ -2,6 +2,7 @@ import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import {MongoClient, ObjectId} from 'mongodb';
+import axios from 'axios';
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,9 +16,19 @@ MongoClient.connect(url, (err, db) => {
   miniPosts = db.collection('miniPosts');
 });
 
+function memeUrl(tag) {
+  if (tag === 'random') tag = 'meme';
+  return `https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_API_KEY}&tag=${tag}&rating=PG-13`;
+}
 
-// Return all explore posts with {type: explore}
+app.get('/api/meme/:tag', (req, res) => {
+  axios.get(memeUrl(req.params.tag))
+    .then(data => res.json({image: data.data.data.image_url}))
+});
+
+// Return all explore posts with {type: :type}
 app.get('/api/posts/:type', (req, res) => {
+  //posts.find({type: req.params.type}).sort({'time': -1}).toArray()
   posts.find({}).sort({'time': -1}).toArray()
     .then(toSend => res.json(toSend));
 });
@@ -39,8 +50,21 @@ app.put('/api/post/:postID', (req, res) => {
 
 // Return all miniPosts with {type: :type}
 app.get('/api/miniPosts/:type', (req, res) => {
-  miniPosts.find({type: req.params.type}).sort({'time': -1}).toArray()
-    .then(toSend => res.json(toSend));
+  if (req.params.type !== 'profile') {
+    miniPosts.find({type: req.params.type}).sort({'time': -1}).toArray()
+      .then(toSend => res.json(toSend));
+  } else {
+    let mini_posts = miniPosts.find({type: req.params.type}).sort({'time': -1}).toArray();
+    let numberOfJobs = miniPosts.count({type: 'experience'});
+    Promise.all([mini_posts, numberOfJobs])
+      .then(data => {
+        let toSend = {
+          miniPosts: data[0],
+          numberOfJobs: data[1]
+        };
+        res.json(toSend);
+      })
+  }
 });
 
 // Return all miniPosts

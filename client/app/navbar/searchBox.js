@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import {SearchResults, SearchResultsPopup} from './search-results';
+import {RandomMeme} from './../404/404';
 
 import sprites from './../../public/sprites.png';
 import './searchBox.css';
@@ -102,7 +103,10 @@ export default class SearchBox extends React.Component {
         }
         {
           this.state.mobile && !this.state.query &&
-          <div>There will be memes here!</div>
+          <div className="search-meme-container">
+            <div>Don't know what to search, here's a gif!</div>
+            <RandomMeme tag="search"/>
+          </div>
         }
       </div>
     );

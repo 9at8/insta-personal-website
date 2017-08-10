@@ -10,6 +10,7 @@ import Profile from './profile/profile';
 import Post from './post/post';
 import NotFound from './404/404';
 
+import './../public/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const App = (props) => {
   return (
@@ -23,7 +24,7 @@ const App = (props) => {
           <Route path="/activity" component={Hearts}/>
           <Route path="/9at8" component={Profile}/>
           <Route path="/post/:postID" component={Post}/>
-          <Route component={NotFound}/>
+          <Route path="/:something" component={NotFound}/>
         </Switch>
       </div>
       <NavbarMobile/>

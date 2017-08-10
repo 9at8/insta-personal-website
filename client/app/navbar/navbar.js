@@ -6,14 +6,13 @@ import SearchBox from './searchBox';
 
 import './../../public/fonts/billabong.ttf';
 import './navbar.css';
-import './../../public/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const Header = () => {
   return (
     <div className="nav-header">
       <Link to="/">
-        <div className="fa fa-instagram fa-1x navbar-logo"> </div>
-        <span> </span> Aditya Thakral
+        <div className="fa fa-instagram fa-1x navbar-logo"/>
+        <span/> Aditya Thakral
       </Link>
     </div>
   );

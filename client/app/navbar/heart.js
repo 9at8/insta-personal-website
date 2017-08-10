@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+import DetailsButton from './../explore/details-button';
+
 import spinner from './../../public/spinner.gif';
 import './popup.css';
 import './heart.css';
@@ -16,9 +18,7 @@ const Result = (props) => {
         <div className="heart-result-data-text">{props.caption}</div>
         <Link
           to={props.details}>
-          <button className="heart-result-data-button">
-            Details
-          </button>
+          <DetailsButton text="More"/>
         </Link>
       </div>
     </div>

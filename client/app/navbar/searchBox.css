@@ -83,4 +83,14 @@
     .search-box > div {
         width: 100%;
     }
+
+    .search-meme-container {
+        padding: 10px;
+    }
+
+    .search-meme-container > div {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 10px;
+    }
 }

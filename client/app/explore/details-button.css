@@ -1,0 +1,13 @@
+.details-button {
+    height: 100%;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin: 10px;
+    background: #3879f0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.details-button:active {
+    background: #29b6f6;
+}
