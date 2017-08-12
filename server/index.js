@@ -28,8 +28,8 @@ app.get('/api/meme/:tag', (req, res) => {
 
 // Return all explore posts with {type: :type}
 app.get('/api/posts/:type', (req, res) => {
-  //posts.find({type: req.params.type}).sort({'time': -1}).toArray()
-  posts.find({}).sort({'time': -1}).toArray()
+  posts.find({type: req.params.type}).sort({'time': -1}).toArray()
+  //posts.find({}).sort({'time': -1}).toArray()
     .then(toSend => res.json(toSend));
 });
 
@@ -55,7 +55,7 @@ app.get('/api/miniPosts/:type', (req, res) => {
       .then(toSend => res.json(toSend));
   } else {
     let mini_posts = miniPosts.find({type: req.params.type}).sort({'time': -1}).toArray();
-    let numberOfJobs = miniPosts.count({type: 'experience'});
+    let numberOfJobs = miniPosts.count({type: 'explore'});
     Promise.all([mini_posts, numberOfJobs])
       .then(data => {
         let toSend = {

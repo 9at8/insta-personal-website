@@ -1,6 +1,6 @@
 const profile_picture = 'https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F';
 const author = {name: '9at8', avatar: profile_picture};
-const type = 'profile';
+const type = 'home';
 
 const projects = [
   {
@@ -11,7 +11,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2015, 2, 13),
-    image: '/static/images/profile/school-manager.png',
+    image: '/static/images/home/school-manager.png',
     caption: 'School Manager, Grade 11 project',
     likes: 0,
     comments: [
@@ -33,7 +33,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2015, 11, 15),
-    image: '/static/images/profile/pi-cam.png',
+    image: '/static/images/home/pi-cam.png',
     caption: 'PiCam',
     likes: 0,
     comments: [
@@ -56,7 +56,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2016, 1, 10),
-    image: '/static/images/profile/distance-finder.png',
+    image: '/static/images/home/distance-finder.png',
     caption: 'Distance Finder',
     likes: 0,
     comments: [
@@ -79,7 +79,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2016, 2, 3),
-    image: '/static/images/profile/mysql-manager.png',
+    image: '/static/images/home/mysql-manager.png',
     caption: 'MySQL Manager: Grade 12 project',
     likes: 0,
     comments: [
@@ -101,7 +101,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2016, 4, 16),
-    image: '/static/images/profile/synk.png',
+    image: '/static/images/home/synk.png',
     caption: 'Synk: Files and folders synchronization app',
     likes: 0,
     comments: [
@@ -123,7 +123,7 @@ const projects = [
       text: 'Devpost'
     },
     time: new Date(2016, 10, 6),
-    image: '/static/images/profile/sign-language-translator.png',
+    image: '/static/images/home/sign-language-translator.gif',
     caption: 'Sign Language Translator',
     likes: 0,
     comments: [
@@ -150,7 +150,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2016, 10, 19),
-    image: '/static/images/profile/emergency-broadcast.png',
+    image: '/static/images/home/emergency-broadcast.png',
     caption: 'Emergency Broadcast',
     likes: 0,
     comments: [
@@ -184,7 +184,7 @@ const projects = [
       text: 'Devpost'
     },
     time: new Date(2017, 0, 27),
-    image: '/static/images/profile/handle.png',
+    image: '/static/images/home/handle.png',
     caption: 'Handle: Handles and lets you handle groceries',
     likes: 0,
     comments: [
@@ -202,7 +202,7 @@ const projects = [
       text: 'Github'
     },
     time: new Date(2017, 4, 8),
-    image: '/static/images/profile/heimdall.png',
+    image: '/static/images/home/heimdall.png',
     caption: 'Heimdall',
     likes: 0,
     comments: [
@@ -217,7 +217,7 @@ const projects = [
     type: type,
     location: null,
     time: new Date(2017, 6, 1),
-    image: '/static/images/profile/monopoly-deal.png',
+    image: '/static/images/home/monopoly-deal.png',
     caption: 'Monopoly Deal Card Game',
     likes: 0,
     comments: [
@@ -240,7 +240,7 @@ const projects = [
     type: type,
     location: null,
     time: new Date(2015, 11, 20),
-    image: '/static/images/profile/powerbank.png',
+    image: '/static/images/home/powerbank.png',
     caption: 'DIY: Powerbank',
     likes: 0,
     comments: [
@@ -265,7 +265,7 @@ const projects = [
     type: type,
     location: null,
     time: new Date(2010, 9, 1),
-    image: '/static/images/profile/car.png',
+    image: '/static/images/home/car.png',
     caption: 'DIY: RC Car',
     likes: 0,
     comments: [

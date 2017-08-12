@@ -20,7 +20,7 @@ export default class Home extends React.Component {
             <Experience
               image={result.image}
               caption={result.altText}
-              position={result.likes}
+              position={result.position}
               postID={result.postID}/>
           );
         })}

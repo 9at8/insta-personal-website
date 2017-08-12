@@ -17,13 +17,13 @@ const Stats = (props) => {
       </Link>
       <Link
         className="profile-header-jobs"
-        to="/9at8">
+        to="/">
         <div><b>{props.projects}</b></div>
         <div className="profile-header-jobs-text">projects</div>
       </Link>
       <Link
         className="profile-header-jobs"
-        to="/">
+        to="/9at8">
         <div><b>∞</b></div>
         <div className="profile-header-jobs-text">fun</div>
       </Link>
