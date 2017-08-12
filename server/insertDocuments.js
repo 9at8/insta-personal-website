@@ -33,6 +33,8 @@ function insert_one_project(index, length) {
     .then(() => {
       if (index < length - 1) {
         insert_one_project(index + 1, length);
+      } else {
+        console.log('Inserted projects.')
       }
     });
 }
@@ -56,6 +58,8 @@ function insert_one_experience(index, length) {
     .then(() => {
       if (index < length - 1) {
         insert_one_experience(index + 1, length);
+      } else {
+        console.log('Inserted experiences.')
       }
     });
 }
@@ -78,6 +82,8 @@ function insert_one_life_story(index, length) {
     .then(() => {
       if (index < length - 1) {
         insert_one_life_story(index + 1, length);
+      } else {
+        console.log('Inserted life story.')
       }
     });
 }

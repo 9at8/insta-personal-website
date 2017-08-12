@@ -49,7 +49,7 @@ export default class Post extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.loadData) {
       if (this.props.match.params.postID !== prevProps.match.params.postID) {
-        axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
+        axios.get(`/api/post/${this.props.match.params.postID}`)
           .then(response => {
             let newState = response.data;
             newState.isLiked = false;
@@ -61,7 +61,7 @@ export default class Post extends React.Component {
 
   componentDidMount() {
     if (this.state.loadData) {
-      axios.get(`http://localhost:8080/api/post/${this.props.match.params.postID}`)
+      axios.get(`/api/post/${this.props.match.params.postID}`)
         .then(response => this.setState(response.data));
     }
   }
@@ -74,7 +74,7 @@ export default class Post extends React.Component {
       };
     });
 
-    axios.put(`http://localhost:8080/api/post/${this.state._id}`, {
+    axios.put(`/api/post/${this.state._id}`, {
       likes: this.state.isLiked ? -1 : 1
     })
   };

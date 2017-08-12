@@ -89,4 +89,8 @@ app.get('/api/search/posts', (req, res) => {
     .then(miniPosts => res.json(miniPosts))
 });
 
-app.listen(9090);
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'public/index.html'));
+});
+
+app.listen(58080);

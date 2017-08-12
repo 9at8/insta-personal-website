@@ -35,7 +35,7 @@ export default class Hearts extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/miniPosts')
+    axios.get('/api/miniPosts')
       .then(results => this.setState({results: results.data}));
   }
 

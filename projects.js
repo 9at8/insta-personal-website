@@ -1,6 +1,6 @@
 const profile_picture = 'https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F';
 const author = {name: '9at8', avatar: profile_picture};
-const type = 'home';
+const type = 'profile';
 
 const projects = [
   {

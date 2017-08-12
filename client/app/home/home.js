@@ -18,7 +18,7 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/posts/home')
+    axios.get('/api/posts/home')
       .then(response => this.setState({posts: response.data}));
   }
 

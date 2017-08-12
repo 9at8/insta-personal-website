@@ -10,7 +10,7 @@ export class RandomMeme extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/api/meme/${this.props.tag}`)
+    axios.get(`/api/meme/${this.props.tag}`)
       .then(data => this.setState({image: data.data.image}));
   }
 

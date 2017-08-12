@@ -29,7 +29,7 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/miniPosts/explore')
+    axios.get('/api/miniPosts/explore')
       .then(response => this.setState({results: response.data}));
   }
 

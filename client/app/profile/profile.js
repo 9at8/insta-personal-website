@@ -144,7 +144,7 @@ export default class Profile extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/miniPosts/profile')
+    axios.get('/api/miniPosts/profile')
       .then(response => this.setMiniPosts(response.data));
   }
 

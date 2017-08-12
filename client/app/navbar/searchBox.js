@@ -45,7 +45,7 @@ export default class SearchBox extends React.Component {
     const value = event.target.value;
     this.setState({query: value});
     if (value) {
-      axios(`http://localhost:8080/api/search/posts?q=${value}`)
+      axios(`/api/search/posts?q=${value}`)
         .then(response => this.setState({results: response.data}));
     }
   };
