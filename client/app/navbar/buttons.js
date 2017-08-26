@@ -1,14 +1,14 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-import Hearts from './heart';
+import Hearts from './heart'
 
-import sprites from './../../public/sprites.png';
-import './buttons.css';
+import sprites from './../../public/sprites.png'
+import './buttons.css'
 
 const backgroundImageSpriteStyle = {
-  backgroundImage: `url(${sprites})`
-};
+  backgroundImage: `url(${sprites})`,
+}
 
 const Home = () => {
   return (
@@ -23,8 +23,8 @@ const Home = () => {
         </div>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
 const Search = () => {
   return (
@@ -38,8 +38,8 @@ const Search = () => {
         </div>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
 const Explore = (props) => {
   return (
@@ -53,8 +53,8 @@ const Explore = (props) => {
         </div>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
 const Heart = (props) => {
   return (
@@ -68,8 +68,8 @@ const Heart = (props) => {
         </div>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
 const Profile = (props) => {
   return (
@@ -83,24 +83,24 @@ const Profile = (props) => {
         </div>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
 export class Buttons extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      isActive: false
-    };
+      isActive: false,
+    }
   }
 
   handleHeartClick = () => {
     this.setState((oldState) => {
       return {
-        isActive: !oldState.isActive
-      };
-    });
-  };
+        isActive: !oldState.isActive,
+      }
+    })
+  }
 
   render() {
     return (
@@ -111,7 +111,7 @@ export class Buttons extends React.Component {
             className="nav-button"
             onClick={this.handleHeartClick}>
             <div
-              style={{backgroundImage: `url(${sprites})`}}
+              style={{ backgroundImage: `url(${sprites})` }}
               className="nav-button-common nav-button-heart">
             </div>
           </div>
@@ -119,7 +119,7 @@ export class Buttons extends React.Component {
         </div>
         {this.state.isActive && <Hearts/>}
       </div>
-    );
+    )
   }
 }
 
@@ -132,5 +132,5 @@ export const MobileButtons = () => {
       <Heart/>
       <Profile/>
     </div>
-  );
-};
+  )
+}

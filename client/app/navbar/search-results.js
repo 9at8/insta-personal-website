@@ -1,8 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import './popup.css';
-import './search-results.css';
+import './popup.css'
+import './search-results.css'
 
 const Result = (props) => {
   return (
@@ -17,8 +17,8 @@ const Result = (props) => {
         {/*<div className="search-result-data-description">World</div>*/}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const SearchResults = (props) => {
   if (props.results && props.results.length > 0) {
@@ -31,18 +31,18 @@ export const SearchResults = (props) => {
                 image={result.image}
                 caption={result.altText}/>
             </Link>
-          );
+          )
         })}
       </div>
-    );
+    )
   } else {
     return (
       <div className="popup-results-main-container search-results-main-container search-results-no-results">
         <span>No results found.</span>
       </div>
-    );
+    )
   }
-};
+}
 
 export const SearchResultsPopup = (props) => {
   return (
@@ -52,5 +52,5 @@ export const SearchResultsPopup = (props) => {
         <SearchResults {...props}/>
       </div>
     </div>
-  );
-};
+  )
+}

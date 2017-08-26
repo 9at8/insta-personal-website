@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './details-button.css';
+import './details-button.css'
 
 const DetailsButton = (props) => {
   return (
@@ -8,6 +8,6 @@ const DetailsButton = (props) => {
       {props.text}
     </div>
   )
-};
+}
 
-export default DetailsButton;
+export default DetailsButton

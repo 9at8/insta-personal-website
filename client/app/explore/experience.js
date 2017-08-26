@@ -1,9 +1,9 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import DetailsButton from './details-button';
+import DetailsButton from './details-button'
 
-import './experience.css';
+import './experience.css'
 
 const Experience = (props) => {
   return (
@@ -21,7 +21,7 @@ const Experience = (props) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience

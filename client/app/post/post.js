@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import React from 'react'
+import PropTypes from 'prop-types'
+import axios from 'axios'
 
-import Response from './response';
+import Response from './response'
 
-import './post.css';
+import './post.css'
 
 
 const Header = (props) => {
   const linkToLocation = () => {
-    return <a href={props.location.website}>{props.location.text}</a>;
-  };
+    return <a href={props.location.website}>{props.location.text}</a>
+  }
 
   return (
     <div className="post-header">
@@ -22,28 +22,28 @@ const Header = (props) => {
         <span>{!!props.location && linkToLocation()}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default class Post extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = this.props.post;
-    const width = window.innerWidth;
+    this.state = this.props.post
+    const width = window.innerWidth
 
     if (!this.props.post) {
-      this.state = {};
-      this.state.standalone = true;
-      this.state.loadData = true;
+      this.state = {}
+      this.state.standalone = true
+      this.state.loadData = true
     }
 
     if (480 >= width && width >= 320) {
-      this.state.standalone = false;
-      this.state.mobile = true;
+      this.state.standalone = false
+      this.state.mobile = true
     }
 
-    this.state.isLiked = false;
+    this.state.isLiked = false
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -51,10 +51,10 @@ export default class Post extends React.Component {
       if (this.props.match.params.postID !== prevProps.match.params.postID) {
         axios.get(`/api/post/${this.props.match.params.postID}`)
           .then(response => {
-            let newState = response.data;
-            newState.isLiked = false;
-            this.setState(newState);
-          });
+            let newState = response.data
+            newState.isLiked = false
+            this.setState(newState)
+          })
       }
     }
   }
@@ -62,7 +62,7 @@ export default class Post extends React.Component {
   componentDidMount() {
     if (this.state.loadData) {
       axios.get(`/api/post/${this.props.match.params.postID}`)
-        .then(response => this.setState(response.data));
+        .then(response => this.setState(response.data))
     }
   }
 
@@ -70,14 +70,14 @@ export default class Post extends React.Component {
     this.setState((oldState) => {
       return {
         likes: this.state.isLiked ? oldState.likes - 1 : oldState.likes + 1,
-        isLiked: !oldState.isLiked
-      };
-    });
+        isLiked: !oldState.isLiked,
+      }
+    })
 
     axios.put(`/api/post/${this.state._id}`, {
-      likes: this.state.isLiked ? -1 : 1
+      likes: this.state.isLiked ? -1 : 1,
     })
-  };
+  }
   renderStandalonePost = () => {
     if (this.state.image) {
       return (
@@ -105,9 +105,9 @@ export default class Post extends React.Component {
               time={this.state.time}/>
           </div>
         </div>
-      );
+      )
     }
-  };
+  }
 
   render() {
     if (!this.state.standalone && this.state.image) {
@@ -130,13 +130,13 @@ export default class Post extends React.Component {
             comments={this.state.comments}
             time={this.state.time}/>
         </div>
-      );
+      )
     } else {
       return (
         <div>
           {this.renderStandalonePost()}
         </div>
-      );
+      )
     }
   }
 }
@@ -147,13 +147,13 @@ Post.propTypes = {
       author: PropTypes.shape(
         {
           name: PropTypes.string,
-          avatar: PropTypes.string
+          avatar: PropTypes.string,
         }).isRequired,
       location: PropTypes.shape(
         {
           text: PropTypes.string.isRequired,
-          website: PropTypes.string.isRequired
-        }
+          website: PropTypes.string.isRequired,
+        },
       ),
       time: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
@@ -162,8 +162,8 @@ Post.propTypes = {
       comments: PropTypes.arrayOf(PropTypes.shape(
         {
           user: PropTypes.string.isRequired,
-          comment: PropTypes.string.isRequired
-        })).isRequired
-    }
-  )
-};
+          comment: PropTypes.string.isRequired,
+        })).isRequired,
+    },
+  ),
+}

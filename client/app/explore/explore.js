@@ -1,15 +1,15 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import axios from 'axios'
 
-import Experience from './experience';
-import './explore.css';
+import Experience from './experience'
+import './explore.css'
 
 export default class Home extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      results: null
-    };
+      results: null,
+    }
   }
 
   getExperiences = () => {
@@ -22,15 +22,15 @@ export default class Home extends React.Component {
               caption={result.altText}
               position={result.position}
               postID={result.postID}/>
-          );
+          )
         })}
       </div>
-    );
-  };
+    )
+  }
 
   componentDidMount() {
-    axios.get('/api/miniPosts/explore')
-      .then(response => this.setState({results: response.data}));
+    axios.get('/api/miniPosts/experience')
+      .then(response => this.setState({ results: response.data }))
   }
 
   render() {
@@ -38,6 +38,6 @@ export default class Home extends React.Component {
       <div className="explore-container">
         {this.state.results && this.getExperiences()}
       </div>
-    );
+    )
   }
 }

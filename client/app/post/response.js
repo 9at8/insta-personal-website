@@ -1,52 +1,52 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import React from 'react'
+import PropTypes from 'prop-types'
+import moment from 'moment'
 
-import sprites from './../../public/sprites.png';
+import sprites from './../../public/sprites.png'
 
-import './response.css';
+import './response.css'
 
 // Like Component -----------------------
 const Likes = (props) => {
   const numberOfLikes = () => {
-    const num = props.likes;
+    const num = props.likes
     if (num === 0) {
-      return;
+      return
     } else if (num === 1) {
-      return num + ' like';
+      return num + ' like'
     }
-    return num + ' likes';
-  };
-
-  let style = {};
-  if (!props.standalone) {
-    style = {border: 'none'};
+    return num + ' likes'
   }
 
-  let isLikedClassName = 'like';
+  let style = {}
+  if (!props.standalone) {
+    style = { border: 'none' }
+  }
+
+  let isLikedClassName = 'like'
   if (props.isLiked) {
-    isLikedClassName = 'red-like';
+    isLikedClassName = 'red-like'
   }
 
   return (
     <div className="likes" style={style}>
       <div className="buttons">
         <div
-          style={{backgroundImage: `url(${sprites})`}}
+          style={{ backgroundImage: `url(${sprites})` }}
           onClick={() => props.toggleLike()}
           className={`${isLikedClassName} like-comment-common`}>
         </div>
         {/*<div*/}
-          {/*style={{backgroundImage: `url(${sprites})`}}*/}
-          {/*className="comment like-comment-common">*/}
+        {/*style={{backgroundImage: `url(${sprites})`}}*/}
+        {/*className="comment like-comment-common">*/}
         {/*</div>*/}
       </div>
       <div>
         {numberOfLikes()}
       </div>
     </div>
-  );
-};
+  )
+}
 
 // --------------------------------------
 
@@ -59,24 +59,24 @@ const Comment = (props) => {
       <b>{props.user + ' '}</b>
       {props.comment}
     </li>
-  );
-};
+  )
+}
 
 
 const Comments = (props) => {
   const showComments = () => {
     return props.comments.map((item) => {
-      return <Comment user={item.user} comment={item.comment}/>;
-    });
-  };
+      return <Comment user={item.user} comment={item.comment}/>
+    })
+  }
 
   if (!props.comments) {
-    return <div className="comments"/>;
+    return <div className="comments"/>
   }
 
   if (props.standalone) {
     return (
-      <div className="comments" style={{overflowY: 'auto'}}>
+      <div className="comments" style={{ overflowY: 'auto' }}>
         <ul>
           <Comment
             user={props.author}
@@ -86,7 +86,7 @@ const Comments = (props) => {
           {showComments()}
         </ul>
       </div>
-    );
+    )
   }
   return (
     <div className="comments">
@@ -99,14 +99,14 @@ const Comments = (props) => {
         {showComments()}
       </ul>
     </div>
-  );
-};
+  )
+}
 
 Comments.propTypes = {
   author: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired,
-  comments: PropTypes.array.isRequired
-};
+  comments: PropTypes.array.isRequired,
+}
 
 // --------------------------------------
 
@@ -118,8 +118,8 @@ const Time = (props) => {
     <div className="time">
       {moment(props.time).fromNow().toUpperCase()}
     </div>
-  );
-};
+  )
+}
 
 // --------------------------------------
 
@@ -132,8 +132,8 @@ const AddComment = (props) => {
       <input placeholder="Add a comment..."/>
       <button>...</button>
     </div>
-  );
-};
+  )
+}
 
 // --------------------------------------
 
@@ -158,7 +158,7 @@ const Response = (props) => {
           <Time time={props.time}/>
         </div>
       </div>
-    );
+    )
   }
   return (
     <div className="response">
@@ -172,9 +172,9 @@ const Response = (props) => {
         comments={props.comments}/>
       <Time time={props.time}/>
     </div>
-  );
-};
+  )
+}
 
-export default Response;
+export default Response
 
 // --------------------------------------

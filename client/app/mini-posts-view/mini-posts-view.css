@@ -1,61 +1,75 @@
-.profile-container {
+.mini-posts-view-container {
     flex-basis: 935px;
     margin: 0 auto;
 }
 
-.profile-header {
+.mini-posts-view-header {
     display: flex;
-    height: 252px;
+    height: 370px;
     padding: 60px 0 40px;
     box-sizing: border-box;
     font-size: 16px;
 }
 
-.profile-header-links {
+.mini-posts-view-header-links {
     display: flex;
 }
 
-.profile-header-links div {
+.mini-posts-view-header-links div {
     margin-right: 10px;
 }
 
-.profile-header-image {
-    flex: 1;
-    height: 100%;
+.mini-posts-view-header-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 280px;
+    width: 280px;
     text-align: center;
-}
-
-.profile-header-image img {
-    height: 100%;
     border-radius: 50%;
+    overflow: hidden;
+    margin-right: 40px;
 }
 
-.profile-header-info {
+.mini-posts-view-header-image img {
+    height: 100%;
+}
+
+.mini-posts-view-header-info {
     flex: 2;
     height: 100%;
     width: 100%;
 }
 
-.profile-header-name {
+.mini-posts-view-header-name {
     font-size: 32px;
     padding: 0 16px 0 0;
 }
 
-.profile-header-info > div {
+.mini-posts-view-header-info > div {
     display: flex;
     padding: 4px 0 16px;
 }
 
-.profile-header-info-main {
+.mini-posts-view-header-info-main {
     align-items: center;
 }
 
-.profile-header-jobs {
+.mini-posts-view-header-info-bio {
+    display: block !important;
+}
+
+.mini-posts-view-header-info-bio > p {
+    /*margin: 5px 0;*/
+}
+
+.mini-posts-view-header-jobs {
     padding: 0 32px 0 0;
     display: flex;
 }
 
-.profile-header-jobs-text {
+.mini-posts-view-header-jobs-text {
     padding-left: 0.3em;
 }
 
@@ -76,45 +90,41 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-    .profile-header {
-        height: 77px;
+    .mini-posts-view-header {
+        height: auto;
         padding: 0;
-        margin: 30px 16px 24px;
+        margin: 14px 16px 0;
     }
 
-    .profile-header-image {
-        flex: 0;
-        height: 100%;
-        text-align: center;
-        margin-right: 28px;
+    .mini-posts-view-header-image {
+        display: none;
     }
 
-    .profile-header-info {
+    .mini-posts-view-header-info {
         display: flex;
         align-items: center;
+        height: auto;
     }
 
-    .profile-header-info-main {
+    .mini-posts-view-header-info-main {
         width: 100%;
         padding: 0 !important;
         font-size: 16px;
     }
 
-    .profile-header-links {
-        width: 100%;
-        justify-content: flex-end;
+    .mini-posts-view-header-links {
+
     }
 
-    .profile-header-links div {
-        margin-right: 0;
-        margin-left: 10px;
+    .mini-posts-view-header-links div {
+
     }
 
-    .profile-header-info-bio-mobile {
-        padding: 0 16px 24px;
+    .mini-posts-view-header-info-bio-mobile {
+        padding: 0 16px;
     }
 
-    .profile-header-info-stats-mobile {
+    .mini-posts-view-header-info-stats-mobile {
         border-top: 1px solid #e6e6e6;
         margin: 0 16px;
         padding: 10px 0;
@@ -122,7 +132,7 @@
         justify-content: space-between;
     }
 
-    .profile-header-jobs {
+    .mini-posts-view-header-jobs {
         flex: 1;
         flex-direction: column;
         padding: 0;
@@ -130,7 +140,7 @@
         justify-content: center;
     }
 
-    .profile-header-jobs-text {
+    .mini-posts-view-header-jobs-text {
         color: #999;
     }
 

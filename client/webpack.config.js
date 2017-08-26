@@ -7,7 +7,7 @@ let config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   module: {
     loaders: [
@@ -42,6 +42,7 @@ let config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  config.output.publicPath = '/static/'
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {

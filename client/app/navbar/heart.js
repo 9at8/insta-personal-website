@@ -1,12 +1,12 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-import DetailsButton from './../explore/details-button';
+import DetailsButton from './../explore/details-button'
 
-import spinner from './../../public/spinner.gif';
-import './popup.css';
-import './heart.css';
+import spinner from './../../public/spinner.gif'
+import './popup.css'
+import './heart.css'
 
 const Result = (props) => {
   return (
@@ -22,21 +22,21 @@ const Result = (props) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default class Hearts extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {results: null};
+    super(props)
+    this.state = { results: null }
     if (this.props.match) {
-      this.state.standalone = true;
+      this.state.standalone = true
     }
   }
 
   componentDidMount() {
     axios.get('/api/miniPosts')
-      .then(results => this.setState({results: results.data}));
+      .then(results => this.setState({ results: results.data }))
   }
 
   renderResults = () => {
@@ -47,24 +47,24 @@ export default class Hearts extends React.Component {
             <img src={spinner}/>
           </div>
         </div>
-      );
+      )
     } else {
       const results = this.state.results.map(result => {
-        let details = `/post/${result.postID}`;
+        let details = `/post/${result.postID}`
         return (
           <Result
             image={result.image}
             caption={result.altText}
             details={details}/>
-        );
-      });
+        )
+      })
       return (
         <div className="popup-results-main-container hearts-results-main-container">
           {results}
         </div>
-      );
+      )
     }
-  };
+  }
 
   render() {
     if (this.state.standalone) {
@@ -72,7 +72,7 @@ export default class Hearts extends React.Component {
         <div className="popup-results-container hearts-results-container">
           {this.renderResults()}
         </div>
-      );
+      )
     }
     return (
       <div className="popup-results-wrapper hearts-results-wrapper">
@@ -82,6 +82,6 @@ export default class Hearts extends React.Component {
           {this.renderResults()}
         </div>
       </div>
-    );
+    )
   }
 }
