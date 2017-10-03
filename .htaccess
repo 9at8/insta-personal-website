@@ -1,0 +1,27 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# If you want websockets, uncomment this:
+#RewriteCond %{HTTP:UPGRADE} ^WebSocket$ [NC]
+#RewriteCond %{HTTP:CONNECTION} ^Upgrade$ [NC]
+#RewriteRule .* ws://HOST:RANDOM_PORT%{REQUEST_URI} [L,P]
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule "index.html" "http://hfcs:58080/" [P]
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule "^(.*)$" "http://hfcs:58080/$1" [P]
+
+# ALLOW ONLY NECESSARY REQUEST METHODS
+# RewriteCond %{REQUEST_METHOD} !^(GET|PUT) [NC]
+# RewriteRule .* - [F,L]
+
+<Limit GET POST PUT OPTIONS>
+    Require all granted
+</Limit>
+<LimitExcept GET POST PUT OPTIONS>
+    Require all denied
+</LimitExcept>
+
