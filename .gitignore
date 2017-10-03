@@ -2,7 +2,7 @@ client/node_modules
 client/package-lock.json
 client/dist
 client/npm-debug.log
+
 server/node_modules
 server/dist
 server/npm-debug.log
-.idea
