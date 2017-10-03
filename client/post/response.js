@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-import sprites from './../../public/sprites.png'
+import sprites from './../public/sprites.png'
 
 import './response.css'
 

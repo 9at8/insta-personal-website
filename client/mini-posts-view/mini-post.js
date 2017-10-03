@@ -1,6 +1,6 @@
 import React from 'react'
 
-import sprites from './../../public/sprites.png'
+import sprites from './../public/sprites.png'
 import './mini-post.css'
 
 const MiniPost = (props) => {

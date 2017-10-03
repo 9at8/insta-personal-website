@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import DetailsButton from './../explore/details-button'
 
-import spinner from './../../public/spinner.gif'
+import spinner from './../public/spinner.gif'
 import './popup.css'
 import './heart.css'
 

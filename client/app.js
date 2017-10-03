@@ -10,7 +10,7 @@ import MiniPostsView  from './mini-posts-view/mini-posts-view'
 import Post from './post/post'
 import NotFound from './404/404'
 
-import './../public/font-awesome-4.7.0/css/font-awesome.min.css'
+import './public/font-awesome-4.7.0/css/font-awesome.min.css'
 
 const App = (props) => {
   return (

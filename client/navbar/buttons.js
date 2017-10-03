@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import Hearts from './heart'
 
-import sprites from './../../public/sprites.png'
+import sprites from './../public/sprites.png'
 import './buttons.css'
 
 const backgroundImageSpriteStyle = {

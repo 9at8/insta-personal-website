@@ -118,7 +118,7 @@ const MiniPostContainer = (props) => {
         key={i}
         className="mini-post-row">
         {renderMiniPostsRow(i)}
-      </div>,
+      </div>
     )
   }
   return <div className="mini-post-container">{miniPosts}</div>

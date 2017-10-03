@@ -4,7 +4,7 @@ import axios from 'axios'
 import { SearchResults, SearchResultsPopup } from './search-results'
 import { RandomMeme } from './../404/404'
 
-import sprites from './../../public/sprites.png'
+import sprites from './../public/sprites.png'
 import './searchBox.css'
 
 export default class SearchBox extends React.Component {

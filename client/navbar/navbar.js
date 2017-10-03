@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Buttons, MobileButtons } from './buttons'
 import SearchBox from './searchBox'
 
-import './../../public/fonts/billabong.ttf'
+import './../public/fonts/billabong.ttf'
 import './navbar.css'
 
 const Header = () => {
