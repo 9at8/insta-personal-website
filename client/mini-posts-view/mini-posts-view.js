@@ -35,12 +35,14 @@ const Bio = (props) => {
   const mobile = props.mobile ? '-mobile' : ''
   return (
     <div className={`mini-posts-view-header-info-bio${mobile}`}>
-      <p><Links/></p>
-      <p>Your friendly neighborhood web developer!</p>
-      <p>I am always excited to learn new things, fun to work with, and a meme-lover
-        studying Computer Science at the University of Waterloo.</p>
-      <p>Oh, I am also looking for a job for the Winter 2018 term!</p>
-      <p>Look out for memes and puns!</p>
+      {/*<p><Links/></p>*/}
+      {/*<p>Your friendly neighborhood web developer!</p>*/}
+      {/*<p>I am always excited to learn new things, fun to work with, and a meme-lover*/}
+        {/*studying Computer Science at the University of Waterloo.</p>*/}
+      {/*<p>Oh, I am also looking for a job for the Winter 2018 term!</p>*/}
+      {/*<p>Look out for memes and puns!</p>*/}
+      <p>I am your friendly neighborhood web developer! 🕸 I am always excited to learn new things. I love memes 🐸 and I am fun to work with! 👨‍💻</p>
+      <p>Sophomore 👨‍🎓 ‍Computer Science @ University of Waterloo 🦆</p>
     </div>
   )
 }
@@ -79,9 +81,6 @@ const Header = (props) => {
         <img src={props.image}/>
       </div>
       <div className="mini-posts-view-header-info">
-        <div className="mini-posts-view-header-info-main">
-          <span className="mini-posts-view-header-name">{props.name}</span>
-        </div>
         {!props.mobile &&
         <Stats
           jobs={props.jobs}
@@ -165,15 +164,14 @@ export default class MiniPostsView extends React.Component {
           mobile={this.state.mobile}
           jobs={this.state.numberOfJobs}
           projects={this.state.numberOfProjects}
-          name="Aditya Thakral"
           image="https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F"/>
           {/*image="/static/images/profile/science-project.png"/>*/}
         {this.state.mobile && <Bio mobile={this.state.mobile}/>}
         {this.state.mobile &&
-        <Stats
-          mobile={this.state.mobile}
-          jobs={this.state.numberOfJobs}
-          projects={this.state.numberOfProjects}/>
+          <Stats
+            mobile={this.state.mobile}
+            jobs={this.state.numberOfJobs}
+            projects={this.state.numberOfProjects}/>
         }
         {this.state.miniPosts && <MiniPostContainer miniPosts={this.state.miniPosts}/>}
       </div>

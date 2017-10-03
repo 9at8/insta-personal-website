@@ -5,8 +5,8 @@
 
 .mini-posts-view-header {
     display: flex;
-    height: 370px;
-    padding: 60px 0 40px;
+    /*height: 370px;*/
+    padding: 60px 60px 40px;
     box-sizing: border-box;
     font-size: 16px;
 }
@@ -24,8 +24,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    height: 280px;
-    width: 280px;
+    height: 160px;
+    width: 160px;
     text-align: center;
     border-radius: 50%;
     overflow: hidden;
@@ -40,6 +40,7 @@
     flex: 2;
     height: 100%;
     width: 100%;
+    margin: auto;
 }
 
 .mini-posts-view-header-name {
@@ -61,7 +62,7 @@
 }
 
 .mini-posts-view-header-info-bio > p {
-    /*margin: 5px 0;*/
+    margin: 5px 0;
 }
 
 .mini-posts-view-header-jobs {

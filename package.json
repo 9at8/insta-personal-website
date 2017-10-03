@@ -9,7 +9,8 @@
     "dev-server-watch": "nodemon server.js --watch server.js",
     "dev-server-start": "npm-run-all --parallel dev-server-build dev-server-watch",
     "client-build": "IS_CLIENT=true NODE_ENV='production' webpack -p",
-    "server-build": "webpack --config webpack.config.js --watch",
+    "server-build": "webpack --config webpack.config.js",
+    "server-start": "nodemon server.js --watch server.js",
     "start": "npm-run-all --parallel dev-client-start dev-server-build dev-server-watch",
     "build": "npm-run-all client-build server-build"
   },
