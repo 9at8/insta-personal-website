@@ -12,13 +12,13 @@ const Stats = (props) => {
       <Link
         className="mini-posts-view-header-jobs"
         to="/explore">
-        <div><b>{props.jobs}</b></div>
+        <div><b>{props.jobs ? props.jobs : 0}</b></div>
         <div className="mini-posts-view-header-jobs-text">jobs</div>
       </Link>
       <Link
         className="mini-posts-view-header-jobs"
         to="/9at8">
-        <div><b>{props.projects}</b></div>
+        <div><b>{props.projects ? props.projects : 0}</b></div>
         <div className="mini-posts-view-header-jobs-text">projects</div>
       </Link>
       <Link
@@ -35,13 +35,8 @@ const Bio = (props) => {
   const mobile = props.mobile ? '-mobile' : ''
   return (
     <div className={`mini-posts-view-header-info-bio${mobile}`}>
-      {/*<p><Links/></p>*/}
-      {/*<p>Your friendly neighborhood web developer!</p>*/}
-      {/*<p>I am always excited to learn new things, fun to work with, and a meme-lover*/}
-        {/*studying Computer Science at the University of Waterloo.</p>*/}
-      {/*<p>Oh, I am also looking for a job for the Winter 2018 term!</p>*/}
-      {/*<p>Look out for memes and puns!</p>*/}
-      <p>I am your friendly neighborhood web developer! 🕸 I am always excited to learn new things. I love memes 🐸 and I am fun to work with! 👨‍💻</p>
+      <p>I am your friendly neighborhood web developer! 🕸 I am always excited to learn new things. I love memes 🐸 and
+        I am fun to work with! 👨‍💻</p>
       <p>Sophomore 👨‍🎓 ‍Computer Science @ University of Waterloo 🦆</p>
     </div>
   )
@@ -117,7 +112,7 @@ const MiniPostContainer = (props) => {
         key={i}
         className="mini-post-row">
         {renderMiniPostsRow(i)}
-      </div>
+      </div>,
     )
   }
   return <div className="mini-post-container">{miniPosts}</div>
@@ -127,6 +122,11 @@ export default class MiniPostsView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
+
+    props.loadData.lifeStory
+      .then(lifeStory => this.setMiniPosts(lifeStory))
+    props.loadData.stats
+      .then(stats => this.setStats(stats))
 
     const width = window.innerWidth
 
@@ -150,13 +150,6 @@ export default class MiniPostsView extends React.Component {
     this.setState({ miniPosts })
   }
 
-  componentDidMount() {
-    axios.get('/api/stats')
-      .then(response => this.setStats(response.data))
-    axios.get('/api/miniPosts/life-story')
-      .then(response => this.setMiniPosts(response.data))
-  }
-
   render() {
     return (
       <div className="mini-posts-view-container">
@@ -165,13 +158,12 @@ export default class MiniPostsView extends React.Component {
           jobs={this.state.numberOfJobs}
           projects={this.state.numberOfProjects}
           image="https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F"/>
-          {/*image="/static/images/profile/science-project.png"/>*/}
         {this.state.mobile && <Bio mobile={this.state.mobile}/>}
         {this.state.mobile &&
-          <Stats
-            mobile={this.state.mobile}
-            jobs={this.state.numberOfJobs}
-            projects={this.state.numberOfProjects}/>
+        <Stats
+          mobile={this.state.mobile}
+          jobs={this.state.numberOfJobs}
+          projects={this.state.numberOfProjects}/>
         }
         {this.state.miniPosts && <MiniPostContainer miniPosts={this.state.miniPosts}/>}
       </div>

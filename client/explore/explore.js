@@ -10,6 +10,9 @@ export default class Home extends React.Component {
     this.state = {
       results: null,
     }
+
+    props.loadData
+      .then(results => this.setState({ results }))
   }
 
   getExperiences = () => {
@@ -26,11 +29,6 @@ export default class Home extends React.Component {
         })}
       </div>
     )
-  }
-
-  componentDidMount() {
-    axios.get('/api/miniPosts/experience')
-      .then(response => this.setState({ results: response.data }))
   }
 
   render() {

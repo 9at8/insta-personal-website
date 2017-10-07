@@ -9,17 +9,14 @@ export default class PostsView extends React.Component {
   constructor(props) {
     super(props)
     this.state = { posts: null }
+    props.loadData
+      .then(posts => this.setState({ posts }))
   }
 
   getHomePosts = () => {
     return (
       this.state.posts.map((post) => <Post key={post._id} post={post}/>)
     )
-  }
-
-  componentDidMount() {
-    axios.get('/api/posts/project')
-      .then(response => this.setState({ posts: response.data }))
   }
 
   render() {

@@ -6,7 +6,6 @@ import Response from './response'
 
 import './post.css'
 
-
 const Header = (props) => {
   const linkToLocation = () => {
     return <a href={props.location.website}>{props.location.text}</a>
@@ -35,7 +34,8 @@ export default class Post extends React.Component {
     if (!this.props.post) {
       this.state = {}
       this.state.standalone = true
-      this.state.loadData = true
+      this.props.loadData
+        .then(data => this.setState(data))
     }
 
     if (480 >= width && width >= 320) {
@@ -47,22 +47,12 @@ export default class Post extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.loadData) {
-      if (this.props.match.params.postID !== prevProps.match.params.postID) {
-        axios.get(`/api/post/${this.props.match.params.postID}`)
-          .then(response => {
-            let newState = response.data
-            newState.isLiked = false
-            this.setState(newState)
-          })
-      }
-    }
-  }
-
-  componentDidMount() {
-    if (this.state.loadData) {
-      axios.get(`/api/post/${this.props.match.params.postID}`)
-        .then(response => this.setState(response.data))
+    if (this.props.match && this.props.match.params.postID !== prevProps.match.params.postID) {
+      this.props.loadData
+        .then(data => {
+          data.isLiked = false
+          this.setState(data)
+        })
     }
   }
 
