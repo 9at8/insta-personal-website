@@ -40,7 +40,7 @@ export class Navbar extends React.Component {
     let isHidden = this.state.isHidden
     let curr = window.scrollY
     if (this.state.search !== true) {
-      if (curr > this.state.prev && curr > 75) {
+      if (curr > this.state.prev && curr > 60) {
         if (!isHidden) this.setState({ isHidden: true })
       } else if (isHidden) this.setState({ isHidden: false })
     }

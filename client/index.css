@@ -25,7 +25,7 @@ a:visited {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 75px 0;
+    margin: 60px 0;
     padding: 0;
     width: 100%;
 }
@@ -51,7 +51,7 @@ a:visited {
 @media (min-width: 320px) and (max-width: 480px) {
     .main-container {
         margin: 0;
-        padding: 60px 0;
+        padding: 44px 0;
         min-height: 100vh;
         box-sizing: border-box;
     }
