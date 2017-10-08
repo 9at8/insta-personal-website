@@ -1,8 +1,8 @@
 let MongoClient = require('mongodb').MongoClient;
 
-let projects = require('./../projects').projects;
-let lifeStoryData = require('./../lifeStoryData').lifeStory;
-let experiences = require('./../experiences').experiences;
+let projects = require('./projects').projects;
+let lifeStoryData = require('./lifeStoryData').lifeStory;
+let experiences = require('./experiences').experiences;
 
 let url = 'mongodb://localhost/personal-website';
 let posts, miniPosts, miniProject;

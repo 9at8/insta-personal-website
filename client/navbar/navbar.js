@@ -11,8 +11,7 @@ const Header = () => {
   return (
     <div className="nav-header">
       <Link to="/">
-        <div className="fa fa-instagram fa-1x navbar-logo"/>
-        <span/> Aditya Thakral
+        Aditya Thakral
       </Link>
     </div>
   )
@@ -47,26 +46,6 @@ export class Navbar extends React.Component {
     }
     this.setState({ prev: curr })
   }
-
-  //closeResults = () => {
-  //  this.setState({ search: false, activity: false })
-  //}
-  //
-  //search = () => {
-  //  this.setState({ search: true })
-  //}
-  //
-  //hideSearchResults = () => {
-  //  this.setState({ search: false })
-  //}
-  //
-  //activity = () => {
-  //  this.setState({ activity: true })
-  //}
-  //
-  //hideHearts = () => {
-  //  this.setState({ activity: false })
-  //}
 
   componentDidMount() {
     window.addEventListener('scroll', this.hideNavbar)

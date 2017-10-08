@@ -45,6 +45,10 @@ export default class Hearts extends React.Component {
     this.state = { results: null }
     if (this.props.match) {
       this.state.standalone = true
+    }
+
+    const width = window.innerWidth
+    if (!(320 <= width && width <= 480)) {
       this.props.history.push('ggwp')
     }
   }

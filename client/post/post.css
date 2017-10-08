@@ -15,6 +15,7 @@
     box-sizing: border-box;
     font-size: 14px;
     border-bottom: 1px solid #e6e6e6;
+    flex-shrink: 0;
 }
 
 .post-avatar {
@@ -55,18 +56,18 @@
 
 .post-standalone {
     display: flex;
-    height: 570px;
     max-width: 935px;
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 3px;
-    margin: 60px 30px 0;
+    margin: 30px;
 }
 
 .post-standalone-picture-container {
     display: flex;
     align-items: center;
     background-color: #fafafa;
+    height: 100%;
 }
 
 .post-standalone-picture-load {
@@ -85,6 +86,8 @@
 }
 
 .post-standalone-container {
+    display: flex;
+    flex-direction: column;
     width: 335px;
     max-height: 100%;
     padding: 0 5px;
