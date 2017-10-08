@@ -34,11 +34,13 @@
 }
 
 .like {
-    background-position: -104px -349px;
+    background-position: -56px -322px;
+    background-size: 395px 371px;
 }
 
 .red-like {
-    background-position: -26px -349px;
+    background-position: -256px -322px;
+    background-size: 395px 371px;
 }
 
 .comment {
