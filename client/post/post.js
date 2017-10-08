@@ -44,6 +44,8 @@ export default class Post extends React.Component {
     }
 
     this.state.isLiked = false
+
+    this.state.imageLoaded = false
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -68,6 +70,11 @@ export default class Post extends React.Component {
       likes: this.state.isLiked ? -1 : 1,
     })
   }
+
+  onImageLoad = (e) => {
+    this.setState({ imageLoaded: true })
+  }
+
   renderStandalonePost = () => {
     if (this.state.image) {
       return (
@@ -75,8 +82,13 @@ export default class Post extends React.Component {
           <div
             className="post-standalone-picture-container"
             onDoubleClick={() => this.toggleLike()}>
+            <div
+              className="post-standalone-picture-load"
+              style={this.state.imageLoaded ? { display: 'none' } : {}}/>
             <img
               className="post-standalone-picture"
+              style={!this.state.imageLoaded ? { display: 'none' } : {}}
+              onLoad={this.onImageLoad}
               src={this.state.image}
               alt={this.state.caption}/>
           </div>
@@ -106,8 +118,13 @@ export default class Post extends React.Component {
           <Header
             author={this.state.author}
             location={this.state.location}/>
+          <div
+            className="post-picture-load"
+            style={this.state.imageLoaded ? { display: 'none' } : {}}/>
           <img
             className="post-picture"
+            style={!this.state.imageLoaded ? { display: 'none' } : {}}
+            onLoad={this.onImageLoad}
             onDoubleClick={() => this.toggleLike()}
             src={this.state.image}
             alt={this.state.caption}/>

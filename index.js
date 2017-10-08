@@ -89,6 +89,10 @@ app.get('/api/search/posts', (req, res) => {
     .then(miniPosts => res.json(miniPosts))
 })
 
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public/favicon.ico'))
+})
+
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public/index.html'))
 })

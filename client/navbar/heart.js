@@ -8,21 +8,35 @@ import spinner from './../public/spinner.gif'
 import './popup.css'
 import './heart.css'
 
-const Result = (props) => {
-  return (
-    <div className="heart-result">
-      <div className="heart-result-avatar">
-        <img src={props.image}/>
+class Result extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { imageLoaded: false }
+  }
+
+  onImageLoad = () => {
+    this.setState({ imageLoaded: true })
+  }
+
+  render() {
+    return (
+      <div className="heart-result">
+        <div className="heart-result-avatar">
+          <img
+            onLoad={this.onImageLoad}
+            style={!this.state.imageLoaded ? { display: 'none' } : {}}
+            src={this.props.image}/>
+        </div>
+        <div className="heart-result-data">
+          <div className="heart-result-data-text">{this.props.caption}</div>
+          <Link
+            to={this.props.details}>
+            <DetailsButton text="More"/>
+          </Link>
+        </div>
       </div>
-      <div className="heart-result-data">
-        <div className="heart-result-data-text">{props.caption}</div>
-        <Link
-          to={props.details}>
-          <DetailsButton text="More"/>
-        </Link>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default class Hearts extends React.Component {

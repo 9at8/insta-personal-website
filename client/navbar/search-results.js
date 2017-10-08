@@ -4,21 +4,34 @@ import { Link } from 'react-router-dom'
 import './popup.css'
 import './search-results.css'
 
-const Result = (props) => {
-  return (
-    <div className="search-result">
-      <div className="search-result-avatar-container">
-        <img
-          className="search-result-avatar"
-          src={props.image}/>
+class Result extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { imageLoaded: false }
+  }
+
+  onImageLoad = () => {
+    this.setState({ imageLoaded: true })
+  }
+
+  render() {
+    return (
+      <div className="search-result">
+        <div className="search-result-avatar-container">
+          <img
+            className="search-result-avatar"
+            onLoad={this.onImageLoad}
+            style={!this.state.imageLoaded ? { display: 'none' } : {}}
+            src={this.props.image}/>
+        </div>
+        <div className="search-result-data">
+          <div className="search-result-data-caption">{this.props.caption}</div>
+        </div>
       </div>
-      <div className="search-result-data">
-        <div className="search-result-data-caption">{props.caption}</div>
-        {/*<div className="search-result-data-description">World</div>*/}
-      </div>
-    </div>
-  )
+    )
+  }
 }
+
 
 export const SearchResults = (props) => {
   if (props.results && props.results.length > 0) {
