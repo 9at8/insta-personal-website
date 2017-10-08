@@ -37,7 +37,7 @@ const Bio = (props) => {
     <div className={`mini-posts-view-header-info-bio${mobile}`}>
       <p>I am your friendly neighborhood web developer! 🕸 I am always excited to learn new things. I love memes 🐸 and
         I am fun to work with! 👨‍💻</p>
-      <p>Sophomore 👨‍🎓 ‍Computer Science @ University of Waterloo 🦆</p>
+      <p>Sophomore 👨‍🎓 ‍Computer Science 🦆 University of Waterloo</p>
     </div>
   )
 }
