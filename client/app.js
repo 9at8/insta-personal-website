@@ -5,8 +5,6 @@ import { Navbar, NavbarMobile } from './navbar/navbar'
 
 import routes from './routes'
 
-import './public/font-awesome-4.7.0/css/font-awesome.min.css'
-
 export default class App extends React.Component {
   constructor(props) {
     super(props)
