@@ -32,15 +32,15 @@ export class Navbar extends React.Component {
     this.state = {
       isHidden: false,
       prev: 0,
-      showSearchResults: false,
-      showHearts: false,
+      search: props.search,
+      activity: props.activity,
     }
   }
 
   hideNavbar = () => {
     let isHidden = this.state.isHidden
     let curr = window.scrollY
-    if (this.state.showSearchResults !== true) {
+    if (this.state.search !== true) {
       if (curr > this.state.prev && curr > 75) {
         if (!isHidden) this.setState({ isHidden: true })
       } else if (isHidden) this.setState({ isHidden: false })
@@ -48,47 +48,47 @@ export class Navbar extends React.Component {
     this.setState({ prev: curr })
   }
 
-  closeResults = () => {
-    this.setState({ showSearchResults: false, showHearts: false })
-  }
-
-  showSearchResults = () => {
-    this.setState({ showSearchResults: true })
-  }
-
-  hideSearchResults = () => {
-    this.setState({ showSearchResults: false })
-  }
-
-  showHearts = () => {
-    this.setState({ showHearts: true })
-  }
-
-  hideHearts = () => {
-    this.setState({ showHearts: false })
-  }
+  //closeResults = () => {
+  //  this.setState({ search: false, activity: false })
+  //}
+  //
+  //search = () => {
+  //  this.setState({ search: true })
+  //}
+  //
+  //hideSearchResults = () => {
+  //  this.setState({ search: false })
+  //}
+  //
+  //activity = () => {
+  //  this.setState({ activity: true })
+  //}
+  //
+  //hideHearts = () => {
+  //  this.setState({ activity: false })
+  //}
 
   componentDidMount() {
     window.addEventListener('scroll', this.hideNavbar)
   }
 
   componentWillUnmount() {
-    window.addEventListener('scroll', this.hideNavbar)
+    window.removeEventListener('scroll', this.hideNavbar)
   }
 
   render() {
     let className = 'navbar'
-    if (this.state.isHidden) className += ' hide-nav'
+    if (this.state.isHidden && !this.props.search && !this.props.activity) className += ' hide-nav'
     return (
       <div className={className}>
         <div>
           <Header/>
           <SearchBox
-            showSearchResults={this.showSearchResults}
-            hideSearchResults={this.hideSearchResults}/>
+            search={this.props.search}
+            showSearch={this.props.showSearch}/>
           <Buttons
-            showHearts={this.showHearts}
-            hideHearts={this.hideHearts}/>
+            activity={this.props.activity}
+            showActivity={this.props.showActivity}/>
         </div>
       </div>
     )

@@ -89,17 +89,10 @@ const Profile = (props) => {
 export class Buttons extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isActive: false,
-    }
   }
 
   handleHeartClick = () => {
-    this.setState((oldState) => {
-      return {
-        isActive: !oldState.isActive,
-      }
-    })
+    this.props.showActivity()
   }
 
   render() {
@@ -117,7 +110,7 @@ export class Buttons extends React.Component {
           </div>
           <Profile/>
         </div>
-        {this.state.isActive && <Hearts/>}
+        {this.props.activity && <Hearts/>}
       </div>
     )
   }

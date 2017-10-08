@@ -11,8 +11,6 @@ export default class SearchBox extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isActive: false,
-      showSearchResults: false,
       showBox: true,
       query: '',
     }
@@ -21,21 +19,15 @@ export default class SearchBox extends React.Component {
 
     if (480 >= width && width >= 320) {
       this.state.mobile = true
-    } else if (!(this.props.showSearchResults && this.props.hideSearchResults)) {
-      this.state.showBox = false
     }
   }
 
   handleBoxClick = () => {
-    if (!this.state.mobile) this.props.showSearchResults()
-    this.setState({ isActive: true, showSearchResults: true })
+    if (!this.state.mobile) this.props.showSearch()
   }
 
   handleCloseClick = () => {
-    if (!this.state.mobile) this.props.hideSearchResults()
     this.setState({
-      isActive: false,
-      showSearchResults: false,
       query: '',
       results: [],
     })
@@ -51,7 +43,7 @@ export default class SearchBox extends React.Component {
   }
 
   box = () => {
-    if (this.state.isActive) {
+    if (this.props.search || this.state.mobile) {
       return (
         <div
           className="search-box"
@@ -65,7 +57,7 @@ export default class SearchBox extends React.Component {
               className="search"
               placeholder="Search"
               value={this.state.query}
-              onChange={(event) => this.handleQueryChange(event)}
+              onChange={this.handleQueryChange}
               autoFocus/>
             <div
               style={{ backgroundImage: `url(${sprites})` }}
@@ -90,15 +82,18 @@ export default class SearchBox extends React.Component {
   }
 
   render() {
+    if (this.props.history && !this.state.mobile) {
+      this.props.history.push('ggwp')
+    }
     return (
       <div className="search-container">
         {this.state.showBox && this.box()}
         {
-          !this.state.mobile && this.state.showSearchResults && this.state.query &&
+          !this.state.mobile && this.props.search && this.state.query &&
           <SearchResultsPopup results={this.state.results}/>
         }
         {
-          this.state.mobile && this.state.showSearchResults && this.state.query &&
+          this.state.mobile && this.state.query &&
           <SearchResults results={this.state.results}/>
         }
         {

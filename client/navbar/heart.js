@@ -45,6 +45,7 @@ export default class Hearts extends React.Component {
     this.state = { results: null }
     if (this.props.match) {
       this.state.standalone = true
+      this.props.history.push('ggwp')
     }
   }
 
