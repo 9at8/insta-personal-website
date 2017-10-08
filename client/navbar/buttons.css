@@ -23,7 +23,7 @@
 }
 
 .nav-button-explore {
-    background-position: -182px -322px;
+    background-position: -181px -322px;
 }
 
 .nav-button-heart {
@@ -72,7 +72,7 @@
 
     .nav-button-explore-active > div {
         background-size: 395px 371px;
-        background-position: -159px -322px;
+        background-position: -156px -322px;
     }
 
     .nav-button-heart-active > div {
