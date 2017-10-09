@@ -140,7 +140,7 @@ export default class Post extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className="post-standalone-wrapper">
           {this.renderStandalonePost()}
         </div>
       )
