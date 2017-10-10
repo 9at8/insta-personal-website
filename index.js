@@ -42,8 +42,8 @@ app.get('/api/post/:postID', (req, res) => {
 // Handles likes or unlikes on MongoDB
 app.put('/api/post/:postID', (req, res) => {
   Promise.all([
-    posts.updateOne({ _id: ObjectId(req.params.postID) }, { $inc: { likes: req.body.likes } }),
-    miniPosts.updateOne({ postID: req.params.postID }, { $inc: { likes: req.body.likes } }),
+    posts.updateOne({ _id: ObjectId(req.params.postID) }, { $inc: { likes: req.body.likes > 0 ? 1 : -1 } }),
+    miniPosts.updateOne({ postID: req.params.postID }, { $inc: { likes: req.body.likes > 0 ? 1 : -1 } }),
   ])
     .then(toSend => res.json(toSend))
 })
