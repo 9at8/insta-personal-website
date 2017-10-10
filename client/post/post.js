@@ -36,6 +36,7 @@ export default class Post extends React.Component {
       this.state.standalone = true
       this.props.loadData
         .then(data => this.setState(data))
+        .catch(err => this.props.history.push('/ggwp'))
     }
 
     if (480 >= width && width >= 320) {
