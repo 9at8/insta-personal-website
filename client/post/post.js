@@ -35,7 +35,10 @@ export default class Post extends React.Component {
       this.state = {}
       this.state.standalone = true
       this.props.loadData
-        .then(data => this.setState(data))
+        .then(data => {
+          if (data) this.setState(data)
+          else this.props.history.push('/ggwp')
+        })
         .catch(err => this.props.history.push('/ggwp'))
     }
 
