@@ -3,6 +3,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import { MongoClient, ObjectId } from 'mongodb'
 import axios from 'axios'
+import crypto from 'crypto'
+import { exec } from 'child_process'
 
 const app = express()
 app.use(bodyParser.json())
@@ -91,6 +93,20 @@ app.get('/api/search/posts', (req, res) => {
 
 app.get('/favicon.ico', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/favicon.ico'))
+})
+
+app.post('/githook', (req, res) => {
+  const payload = req.body
+  const signature = req.headers['x-hub-signature']
+  const hmac = crypto.createHmac('sha1', process.env.GITHOOK_SECRET_TOKEN)
+  hmac.update(JSON.stringify(payload))
+  const calculatedSignature = 'sha1=' + hmac.digest('hex')
+  if (signature === calculatedSignature) {
+    exec('$HOME/deploy', (error, stdout, stderr) => console.log(error, stdout, stderr))
+    res.json({ ranDeploymentScript: true })
+  } else {
+    res.json({ image: "https://media.giphy.com/media/XH6dfMa0cLzYA/giphy.gif" })
+  }
 })
 
 app.get('*', function (req, res) {
