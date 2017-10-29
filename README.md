@@ -1,11 +1,11 @@
 # Instagram themed personal website
 
-##### Development
+#### Development
 ```bash
 $ yarn start
 ```
 
-##### Production
+#### Production
 ```bash
 $ yarn build
 ```
