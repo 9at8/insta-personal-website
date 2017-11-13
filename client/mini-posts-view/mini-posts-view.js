@@ -157,7 +157,7 @@ export default class MiniPostsView extends React.Component {
           mobile={this.state.mobile}
           jobs={this.state.numberOfJobs}
           projects={this.state.numberOfProjects}
-          image="https://scontent.fyzd1-1.fna.fbcdn.net/v/t1.0-9/19366404_10207406972092966_677887742544187123_n.jpg?oh=2357c89dc95d8ac11fe3fe6b908858e6&oe=5A07F05F"/>
+          image="/static/images/profilepicture.jpg"/>
         {this.state.mobile && <Bio mobile={this.state.mobile}/>}
         {this.state.mobile &&
         <Stats
